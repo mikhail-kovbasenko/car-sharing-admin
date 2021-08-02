@@ -1,0 +1,79 @@
+@import './../../styles/colors.scss';
+
+.login {
+	margin-top: 175px;
+	display: flex;
+
+	&__header {
+		display: flex;
+		align-items: center;
+		margin-bottom: 16.5px;
+		justify-content: center;
+	}
+
+	&__logo {
+		margin-right: 11.5px;
+	}
+
+	&__title {
+		font-weight: 400;
+		font-size: 24px;
+		color: $defaultTextColor;
+	}
+
+	&__content {
+		background-color: #fff;
+		border-radius: 9px;
+		box-shadow: 0px 1px 0px rgba(90, 97, 105, 0.11),
+		 			   0px 2px 4px rgba(90, 97, 105, 0.12),
+						0px 5px 5px rgba(90, 97, 105, 0.06), 
+						0px 3.5px 35px rgba(90, 97, 105, 0.1);
+		padding: 19.5px 17px 20.5px 17px;
+	}
+
+	&__content-container {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__content-title {
+		text-align: center;
+		color: $defaultTextColor;
+		font-size: 17.5px;
+		letter-spacing: -0.44px;
+		margin-bottom: 35.5px;
+	}
+
+	&__content-body {
+	}
+
+	&__content-input {
+		display: flex;
+		flex-direction: column;
+		&:first-child {
+			margin-bottom: 15px;
+		}
+		&-title {
+			margin-bottom: 8.5px;
+			font-size: 10.5px;
+		}
+		&-element {
+			& > input {
+				border: 0.5px solid #becad6;
+				border-radius: 3px;
+				padding: 8px 11.5px 8.5px 11.5px;
+				width: 341px;
+				font-size: 11px;
+			}
+		}
+	}
+
+	&__content-footer {
+	}
+
+	&__content-get-access {
+	}
+
+	&__content-submit {
+	}
+}
