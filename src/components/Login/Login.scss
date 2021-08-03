@@ -1,34 +1,51 @@
 @import './../../styles/colors.scss';
+@import './../../styles/media.scss';
 
 .login {
 	margin-top: 175px;
 	display: flex;
-
 	&__header {
 		display: flex;
 		align-items: center;
 		margin-bottom: 16.5px;
 		justify-content: center;
+		@include beforeTablet() {
+			margin-bottom: 10.5px;
+		}
 	}
 
 	&__logo {
 		margin-right: 11.5px;
+		@include beforeTablet() {
+			margin-right: 7.5px;
+		}
+		& img {
+			@include beforeTablet() {
+				transform: scale(0.7);
+			}
+		}
 	}
 
 	&__title {
 		font-weight: 400;
 		font-size: 24px;
 		color: $defaultTextColor;
+		@include beforeTablet() {
+			font-size: 16px;
+		}
 	}
 
 	&__content {
-		background-color: #fff;
+		background-color: $whiteColor;
 		border-radius: 9px;
 		box-shadow: 0px 1px 0px rgba(90, 97, 105, 0.11),
 		 			   0px 2px 4px rgba(90, 97, 105, 0.12),
 						0px 5px 5px rgba(90, 97, 105, 0.06), 
 						0px 3.5px 35px rgba(90, 97, 105, 0.1);
 		padding: 19.5px 17px 20.5px 17px;
+		@include beforeTablet() {
+			padding: 15.5px 13px 16.5px 13px;
+		}
 	}
 
 	&__content-container {
@@ -42,16 +59,25 @@
 		font-size: 17.5px;
 		letter-spacing: -0.44px;
 		margin-bottom: 35.5px;
-	}
-
-	&__content-body {
+		@include beforeTablet() {
+			font-size: 13.5px;
+			margin-bottom: 20.5px;
+		}
 	}
 
 	&__content-input {
+		color: #495057;
 		display: flex;
 		flex-direction: column;
+		margin-bottom: 23.5px;
+		@include beforeTablet() {
+			margin-bottom: 17.5px;
+		}
 		&:first-child {
 			margin-bottom: 15px;
+			@include beforeTablet() {
+				margin-bottom: 8px;
+			}
 		}
 		&-title {
 			margin-bottom: 8.5px;
@@ -64,16 +90,48 @@
 				padding: 8px 11.5px 8.5px 11.5px;
 				width: 341px;
 				font-size: 11px;
+				color: $defaultTextColor;
+				letter-spacing: -0.19px;
+				@include beforeTablet() {
+					padding: 6px 9.5px 6.5px 9.5px;
+					width: 241px;
+				}
 			}
 		}
 	}
 
 	&__content-footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 	}
 
 	&__content-get-access {
+		& a {
+			font-size: 10.5px;
+			color: $loginFooterColor;
+			letter-spacing: -0.18px;
+			&:hover {
+				color: $defaultTextColor;
+			}
+		}
 	}
 
 	&__content-submit {
+		& a {
+			background-color: $loginFooterColor;
+			padding: 10px 36px 8px 36px;
+			font-size: 11.5px;
+			color: $whiteColor;
+			border-radius: 4px;
+			border: 0.5px solid $loginFooterColor;
+			@include beforeTablet() {
+				padding: 8px 34px 6px 34px;
+			}
+			&:hover {
+				background-color: $defaultTextColor;
+				border-color: $defaultTextColor;
+			}
+		}
 	}
 }

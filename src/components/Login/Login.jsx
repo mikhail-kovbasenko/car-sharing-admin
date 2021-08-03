@@ -29,8 +29,12 @@ const Login = () => {
 							</div>
 						</div>
 						<div className="login__content-footer">
-							<div className="login__content-get-access"></div>
-							<div className="login__content-submit"></div>
+							<div className="login__content-get-access">
+								<a href="#">Запросить доступ</a>
+							</div>
+							<div className="login__content-submit">
+								<a href="#">Войти</a>
+							</div>
 						</div>
 					</div>
 				</div>
