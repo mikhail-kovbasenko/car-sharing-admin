@@ -1,7 +1,17 @@
 import './Login.scss';
 import logo from './../../commons/images/login/login-logo.svg';
+import LoginForm from './LoginForm';
+import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import reactDom from 'react-dom';
+import ModalWindow from '../../commons/ModalWindow/ModalWindow';
 
 const Login = () => {
+	const isAuth = useSelector(state => state.auth.isAuth);
+	const isModalOpen = useSelector(state => state.app.isModalOpen);
+
+	if(isAuth) return <Redirect to="/"/>
+
 	return (
 		<div className="login">
 			<div className="login__container">
@@ -11,34 +21,11 @@ const Login = () => {
 					</div>
 					<div className="login__title">Need for drive	</div>
 				</div>
-				<div className="login__content">
-					<div className="login__content-container">
-						<div className="login__content-title">Вход</div>
-						<div className="login__content-body">
-							<div className="login__content-input">
-								<div className="login__content-input-title">Почта</div>
-								<div className="login__content-input-element">
-									<input type="text" name="email"/>
-								</div>
-							</div>
-							<div className="login__content-input">
-								<div className="login__content-input-title">Пароль</div>
-								<div className="login__content-input-element">
-									<input type="password" name="password"/>
-								</div>
-							</div>
-						</div>
-						<div className="login__content-footer">
-							<div className="login__content-get-access">
-								<a href="#">Запросить доступ</a>
-							</div>
-							<div className="login__content-submit">
-								<a href="#">Войти</a>
-							</div>
-						</div>
-					</div>
-				</div>
+			   <LoginForm/>
 			</div>
+			{
+				isModalOpen && reactDom.createPortal(<ModalWindow/>, document.getElementById('modal'))
+			}
 		</div>
 	)
 }
