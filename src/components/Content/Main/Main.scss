@@ -1,0 +1,39 @@
+@import './../../../styles/colors.scss';
+
+.main {
+	flex-grow: 1;
+	&__container {
+	}	
+	&__header {
+		&-container {
+			background-color: $whiteColor;
+			box-shadow: 0px 2.5px 9.5px rgba(90, 97, 105, 0.12),
+							inset 7.5px 0px 9.5px rgba(90, 97, 105, 0.12);
+			padding: 27px 29px;
+		}
+		&-search {
+			& input {
+				color: $searchInputColor;
+				font-size: 13px;
+				padding-left: 24px;
+				width: 50%;
+				background-image: url(./../../../commons/images/main/header/loupe.svg);
+				background-repeat: no-repeat;
+				background-position: left;
+				&:focus {
+					background-image: none;
+				}
+			}
+		}
+		&-notice {}
+		&-user {
+			&-avatar {}
+			&-list {}
+		}
+	}
+	&__content {
+		&-container {
+
+		}
+	}
+}

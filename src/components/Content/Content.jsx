@@ -1,8 +1,14 @@
-import React from "react";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect"
+import './Content.scss';
+import Main from './Main/Main';
+import SidebarContainer from './Sidebar/SidebarContainer';
 
 const Content = () => {
-	return <React.Fragment>Привет, авторизованный пользователь!:)</React.Fragment>
+	return (
+		<div className="content">
+			<SidebarContainer/>
+			<Main/>
+		</div>
+	)
 }
 
-export default withAuthRedirect(Content);
+export default Content;

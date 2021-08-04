@@ -1,14 +1,14 @@
 import { Route, Switch } from 'react-router-dom';
 import './App.scss';
-import Content from './components/Content/Content';
+import ContentContainer from './components/Content/ContentContainer';
 import Login from './components/Login/Login';
 
 function App() {
   return (
     <div className="wrapper">
-		 <div className="content">
+		 <div className="content-page">
 			<Switch>
-				<Route exact path="/" component={Content}/>
+				<Route exact path="/" component={ContentContainer}/>
 				<Route path="/login" component={Login}/>
 			</Switch>
 		 </div>
