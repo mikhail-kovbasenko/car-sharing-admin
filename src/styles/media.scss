@@ -33,3 +33,6 @@ $desktop: 1400px;
 @mixin beforeTabletMax {
 	@media(max-width: $tabletMax) {@content;}
 }
+@mixin beforeMobile {
+	@media(max-width: 370px) {@content;}
+}

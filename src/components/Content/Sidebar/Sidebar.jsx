@@ -2,13 +2,13 @@ import './Sidebar.scss';
 import logo from './../../../commons/images/login/login-logo.svg'
 import SidebarItem from './SidebarItem/SidebarItem';
 
-const Sidebar = ({items}) => {
-	const getSidebarItems = items.map(item => <SidebarItem key={item.id} data={item}/>);
+const Sidebar = ({items, sidebarTitle, sidebarItem}) => {
+	const getSidebarItems = items.map(item => <SidebarItem key={item.id} data={item} sidebarRef={sidebarItem}/>);
 
 	return (
 		<div className="sidebar">
 			<div className="sidebar__container">
-				<div className="sidebar__title">
+				<div className="sidebar__title" ref={sidebarTitle}>
 					<div className="sidebar__title-logo">
 						<img src={logo} alt="sidebar-logo" />
 					</div>
