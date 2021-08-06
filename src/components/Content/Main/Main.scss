@@ -144,6 +144,56 @@
 							0px 5px 5px rgba(90, 97, 105, 0.06), 
 							0px 3.5px 35px rgba(90, 97, 105, 0.1);
 			padding: 16px 21.5px;
+			border: 1px solid red;
+			flex-grow: 1;
+			& .preloader {
+				display: flex;
+				align-self: center;
+				margin: 20% auto;
+			}
+			&-paginator {
+				&-container {
+
+				}
+			}
+		}
+	}
+	&__footer {
+		&-container {
+			display: flex;
+			justify-content: space-between;
+			background-color: $whiteColor;
+			padding: 27px 27.5px;
+			box-shadow: inset 3px 0.5px 7px #D7DAE3;
+			@include beforeTabletMax() {
+				padding: 22px 22.5px;
+				font-size: 12px;
+			}
+			@include beforeTablet() {
+				padding: 17px 17.5px;
+				font-size: 10px;
+			}
+			@include beforeMobile() {
+				padding: 10px 10.5px;
+			}
+		}
+		&-links {
+			display: flex;
+			&-item {
+				color: $loginFooterColor;
+				&:first-child {
+					margin-right: 16px;
+					@include beforeTablet() {
+						margin-right: 10px;
+					}
+				}
+			}
+		}
+		&-copy {
+			color: #818ea3;
+			@include beforeMobile() {
+				display: none;
+			}
 		}
 	}
 }

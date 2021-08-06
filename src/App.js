@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import './App.scss';
-import ContentContainer from './components/Content/ContentContainer';
+import Content from './components/Content/Content';
 import Login from './components/Login/Login';
 
 function App({history}) {
@@ -13,7 +13,7 @@ function App({history}) {
     <div className="wrapper">
 		 <div className="content-page">
 			<Switch>
-				<Route path="/admin" component={ContentContainer}/>
+				<Route path="/admin" component={Content}/>
 				<Route path="/login" component={Login}/>
 			</Switch>
 		 </div>
