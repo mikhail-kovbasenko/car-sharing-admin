@@ -143,19 +143,17 @@
 						   0px 2px 4px rgba(90, 97, 105, 0.12),
 							0px 5px 5px rgba(90, 97, 105, 0.06), 
 							0px 3.5px 35px rgba(90, 97, 105, 0.1);
-			padding: 16px 21.5px;
-			border: 1px solid red;
 			flex-grow: 1;
-			& .preloader {
-				display: flex;
-				align-self: center;
-				margin: 20% auto;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			&-container {
+				flex-grow: 1;
+				position: relative;
 			}
-			&-paginator {
-				&-container {
-
-				}
-			}
+		}
+		& .preloader {
+			margin: auto;	
 		}
 	}
 	&__footer {
@@ -194,6 +192,30 @@
 			@include beforeMobile() {
 				display: none;
 			}
+		}
+	}
+}
+.pagination {
+	display: flex;
+	justify-content: center;
+	& > li {
+		font-size: 18px;
+		display: flex;
+		align-items: center;
+		font-weight: bold;
+		color: $loginFooterColor;
+		&:not(:last-child) {
+			margin-right: 7px;
+		}
+		&.active {
+			border: 1px solid $loginFooterColor;
+			color: $whiteColor;
+			background-color: $loginFooterColor;
+			width: 35px;
+			height: 35px;
+			border-radius: 50%;
+			justify-content: center;
+			
 		}
 	}
 }

@@ -23,6 +23,12 @@ const orders = (state = initialState, action) => {
 				currentPage: action.data.page
 			}
 		}
+		case SET_ORDERS: {
+			return {
+				...state,
+				items: action.data.data
+			}
+		}
 		default: return state;
 	} 
 }
@@ -46,6 +52,7 @@ export const getOrdersFromServer = (token, limit, page) => dispatch => {
 
 	mainAPI.getOrders(token, limit, page).then(response => {
 		if(response.status === 200) {
+			console.log(response);
 			dispatch(setItemsCountActionCreator(response.data.count));
 			dispatch(setOrdersActionCreator(response.data.data));
 			dispatch(toggleIsFetchingActionCreator(false));

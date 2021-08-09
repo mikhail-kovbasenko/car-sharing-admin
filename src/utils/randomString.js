@@ -1,5 +1,5 @@
 export default function getRandomString() {
-	const stringLength = Math.floor(Math.random() * 50) + 1;
+	const stringLength = Math.floor(Math.random() * 25) + 1;
 	const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 	let result = '';
 
