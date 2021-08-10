@@ -12,7 +12,11 @@ const MainHeaderContainer = props => {
 		if(props.sidebarTitle && props.sidebarTitle.current && props.sidebarItem && props.sidebarItem.current) {
 			setTitle(props.sidebarTitle.current);
 			setItem(props.sidebarItem.current);
-			setHeight(props.sidebarTitle.current.offsetHeight);
+
+			setTimeout(() => {
+				if(props.sidebarTitle.current.offsetHeight !== 0) setHeight(props.sidebarTitle.current.offsetHeight);
+				else setHeight(props.sidebarItem.current.offsetHeight);
+			}, 0);
 
 			const onResize = () => {
 				if(title.offsetHeight !== 0) setHeight(title.offsetHeight);
