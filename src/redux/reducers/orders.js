@@ -1,11 +1,11 @@
 import { mainAPI } from "../../api/api";
 import { SET_CURRENT_PAGE, SET_ORDERS, SET_ORDERS_COUNT } from "../types";
-import { toggleIsFetchingActionCreator } from "./app";
+import { toggleIsFetchingActionCreator, toggleIsFetchingContentActionCreator } from "./app";
 
 const initialState = {
 	items: null,
 	itemsCount: 0,
-	itemsOnPage: 10,
+	itemsOnPage: 20,
 	currentPage: 1
 }
 
@@ -46,16 +46,22 @@ const setCurrentPageActionCreator = page => ({
 	data: {page}
 })
 
-export const getOrdersFromServer = (token, limit, page) => dispatch => {
-	dispatch(toggleIsFetchingActionCreator(true));
+
+export const getOrdersFromServer = (token, limit, page, preloader = false) => dispatch => {
+	if(!preloader) {
+		dispatch(toggleIsFetchingActionCreator(true));
+	} else {
+		dispatch(toggleIsFetchingContentActionCreator(true));
+	}
+
 	dispatch(setCurrentPageActionCreator(page));
 
 	mainAPI.getOrders(token, limit, page).then(response => {
 		if(response.status === 200) {
-			console.log(response);
 			dispatch(setItemsCountActionCreator(response.data.count));
 			dispatch(setOrdersActionCreator(response.data.data));
 			dispatch(toggleIsFetchingActionCreator(false));
+			dispatch(toggleIsFetchingContentActionCreator(false));
 		}
 	})
 }

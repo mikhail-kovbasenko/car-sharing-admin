@@ -198,12 +198,25 @@
 .pagination {
 	display: flex;
 	justify-content: center;
+	padding-top: 10px;
+	@include beforeTablet() {
+		padding-top: 5px;
+	}
 	& > li {
 		font-size: 18px;
 		display: flex;
 		align-items: center;
 		font-weight: bold;
 		color: $loginFooterColor;
+		@include beforeDesktopMax() {
+			font-size: 16px;
+		}
+		@include beforeTabletMax() {
+			font-size: 14px;
+		}
+		@include beforeTablet() {
+			font-size: 12px;
+		}
 		&:not(:last-child) {
 			margin-right: 7px;
 		}
@@ -215,7 +228,18 @@
 			height: 35px;
 			border-radius: 50%;
 			justify-content: center;
-			
+			@include beforeDesktopMax() {
+				width: 30px;
+				height: 30px;
+			}
+			@include beforeTabletMax() {
+				width: 25px;
+				height: 25px;
+			}
+			@include beforeTablet() {
+				width: 20px;
+				height: 20px;
+			}	
 		}
 	}
 }

@@ -24,6 +24,8 @@ const OrdersContainer = () => {
 						 currentPage={currentPage}
 						 itemsCount={itemsCount}
 						 items={orders}
+						 token={token}
+						 itemsOnPage={itemsOnPage}
 					  />
 	)
 			 
