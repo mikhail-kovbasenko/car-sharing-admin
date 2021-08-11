@@ -6,3 +6,6 @@ export const SET_ORDERS = 'set-orders';
 export const TOGGLE_IS_FETCHING = 'toggle-is-fetching';
 export const TOGGLE_IS_FETCHING_CONTENT = 'toggle-is-fetching-content';
 export const SET_CURRENT_PAGE = 'set-current-page';
+export const SET_CARS = 'set-cars';
+export const SET_CARS_COUNT = 'set-cars-count';
+export const SET_CURRENT_PAGE_CAR = 'set-current-page-car';

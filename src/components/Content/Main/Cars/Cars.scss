@@ -1,0 +1,9 @@
+@import './../../../../styles/colors.scss';
+@import './../../../../styles/media.scss';
+
+.cars {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 0 5px;
+}
