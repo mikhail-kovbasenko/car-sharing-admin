@@ -105,11 +105,13 @@
 		}
 	}
 }
-.first-item {
-	box-shadow: inset 4px 0px 0px $loginFooterColor;
-	background-color: $sidebarWhiteShadow;
-	color: $loginFooterColor;
-	@include beforeMobile() {
-		box-shadow: inset 2px 0px 0px $loginFooterColor;
+.active {
+	& > div > div {
+		box-shadow: inset 4px 0px 0px $loginFooterColor;
+		background-color: $sidebarWhiteShadow;
+		color: $loginFooterColor;
+		@include beforeMobile() {
+			box-shadow: inset 2px 0px 0px $loginFooterColor;
+		}
 	}
 }
