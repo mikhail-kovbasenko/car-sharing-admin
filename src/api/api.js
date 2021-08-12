@@ -1,4 +1,4 @@
-import getRandomString from './../utils/randomString';
+import { getRandomString } from "../utils/secondaryFunctions";
 const { default: axios } = require("axios");
 
 const defaultURL = 'https://api-factory.simbirsoft1.com/api/';

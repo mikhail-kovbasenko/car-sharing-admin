@@ -1,6 +1,10 @@
+import nextId from "react-id-generator"
+
 const CustomThead = ({list}) => {
 	const getTheadData = list.map(item => {
-		return <th>{item.title}</th>
+		const keyId = nextId();
+
+		return <th key={keyId}>{item.title}</th>
 	})
 	return (
 		<thead>

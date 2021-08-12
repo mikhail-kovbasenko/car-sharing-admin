@@ -1,13 +1,19 @@
 import { useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CustomSettingsHeader from "../../../../commons/CustomSettingsHeader/CustomSettingsHeader";
 import CustomTableContainer from "../../../../commons/CustomTable/CustomTableContainer";
-import getTableData from "../../../../utils/getTableData";
+import Preloader from "../../../../commons/Preloader/Preloader";
+import { getCarsFromServer } from "../../../../redux/reducers/cars";
+import { getTableData } from "../../../../utils/secondaryFunctions";
 import MainContentContainer from "../MainContent/MainContentContainer";
 import './Cars.scss';
 
 const Cars = ({ items, itemsOnPage, itemsCount, token }) => {
-	const changePage = page => {
+	const dispatch = useDispatch();
+	const isFetching = useSelector(state => state.app.isFetchingContent);
 
+	const changePage = page => {
+		dispatch(getCarsFromServer(token, itemsOnPage, page, true));
 	}
 	const propsList = useMemo(() => getTableData([
 		['ID', 'id'],
@@ -19,7 +25,7 @@ const Cars = ({ items, itemsOnPage, itemsCount, token }) => {
 		['Макс.стоимость', 'priceMax', 'price'],
 		['Доступные цвета', 'colors', 'join'],
 		['Дата создания', 'createdAt', 'date'],
-		['Дата последнего изменения', 'updatedAp', 'date'],
+		['Дата последнего изменения', 'updatedAt', 'date'],
 		['Фото', 'thumbnail.path', 'img']
 	]));
 	
@@ -37,7 +43,11 @@ const Cars = ({ items, itemsOnPage, itemsCount, token }) => {
 						</div>
 					</div>
 				</CustomSettingsHeader>
-				<CustomTableContainer items={items} list={propsList}/>
+				{
+					isFetching
+					? <Preloader/>
+					:  <CustomTableContainer items={items} list={propsList}/>
+				}
 			</div>
 		</MainContentContainer>
 	)

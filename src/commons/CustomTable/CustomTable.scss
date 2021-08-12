@@ -1,3 +1,5 @@
+@import './../../styles/colors.scss';
+
 .table-content {
 	height: 100%;
 	position: relative;
@@ -10,16 +12,40 @@
 }
 .custom-table {
 	width: 100%;
-	& thead{
+	border-collapse: separate;
+	border-spacing: 0;
+	& thead th{
 		position: sticky;
-		top: -10px;
-		background-color: silver;
-
-	}
-	& th, & td {
+		top: 0px;
+		font-weight: 700;
+		font-size: 12px;
+		text-align: center;
+		background-color: $whiteColor;
 		border: 1px solid black;
+		&:not(:last-child) {
+			border-right: none;
+		}
+	}
+	& tr:hover td {
+		color: $defaultGreenColor;
+		cursor: pointer;
 	}
 	& td {
 		min-width: 150px;
+		text-align: center;
+		padding: 15px 0;
+		border: 1px solid black;
+		&:not(:last-child) {
+			border-right: none;
+		}
+		& img {
+			width: 200px;
+		}
+	}
+	& tr td:first-child {
+		text-align: left;
+	}
+	& tr:not(:last-child) td {
+		border-bottom: none;
 	}
 }

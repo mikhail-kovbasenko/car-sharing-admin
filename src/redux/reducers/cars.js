@@ -3,7 +3,7 @@ import { defaultPageSettings } from "../../utils/defaultPageSettings";
 import { SET_CARS, SET_CARS_COUNT, SET_CURRENT_PAGE_CAR } from "../types";
 import { toggleIsFetchingActionCreator, toggleIsFetchingContentActionCreator } from "./app";
 
-const initialState = {...defaultPageSettings, itemsOnPage: 10};
+const initialState = {...defaultPageSettings};
 
 const cars = (state = initialState, action) => {
 	switch(action.type) {

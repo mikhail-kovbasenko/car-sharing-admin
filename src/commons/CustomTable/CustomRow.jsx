@@ -1,13 +1,13 @@
 import nextId from "react-id-generator";
 
-const CustomRow = ({item, list, formate}) => {
+const CustomRow = ({item, list, checkProp}) => {
 	return (
 		<tr>
 			{
 				list.map(listItem => {		
 					const keyId = nextId();
 
-					return <td key={keyId}>{formate(item, listItem)}</td>
+					return <td key={keyId}>{checkProp(item, listItem)}</td>
 				})
 			}
 		</tr>

@@ -1,10 +1,10 @@
 import CustomRow from "./CustomRow";
 
-const CustomTbody = ({items, list, formate}) => {
+const CustomTbody = ({items, list, checkProp}) => {
 	return (
 		<tbody>
 				{
-					items.map(item => <CustomRow item={item} list={list} formate={formate} key={item.id}/>)
+					items.map(item => <CustomRow item={item} list={list} checkProp={checkProp} key={item.id}/>)
 				}
 		</tbody>
 	)
