@@ -1,0 +1,245 @@
+@import './../../../../styles/colors.scss';
+@import './../../../../styles/media.scss';
+
+.orders {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 15px;
+	&__settings {
+		padding: 16px 21.5px 14px 21.5px;
+		display: flex;
+		justify-content: space-between;
+		box-shadow: 0px -0.5px 0px #E0E2E8, 0px 0.5px 0px #E0E2E8;
+		@include beforeDesktopMax() {
+			padding: 14px 19.5px 12px 19.5px
+		}
+		@include beforeTabletMax() {
+			padding: 12px 17px 10px 17px;
+		}
+		@include beforeTablet() {
+			padding: 10px 15px 8px 15px;
+		}
+	}
+
+	&__settings-container {
+		display: flex;
+		justify-content: space-between;
+		@include beforeTabletMax() {
+			flex-direction: column;
+		}
+	}
+	&__settings-button {
+		display: flex;
+		align-items: center;
+		& a {
+			padding: 8px 15px;
+			font-size: 11px;
+			color: $whiteColor;
+			background-color: $loginFooterColor;
+			border-radius: 4px;
+
+		}
+	}
+	&__settings-item {
+		&:not(:last-child) {
+			margin-right: 15px;
+			@include beforeTabletMax() {
+				margin-bottom: 5px;
+				margin-right: 0;
+			}
+		}
+		& > select {
+			padding: 8px 14px;
+			border: 0.5px solid $orderItemBorderColor;
+			border-radius: 4px;
+			color: #868e96;
+			font-size: 11px;
+			@include beforeTabletMax() {
+				padding: 6px 12px;
+				font-size: 10px;
+				width: 100%;
+
+			}
+			@include beforeTablet() {
+				padding: 2px 4px;
+			}
+		}
+	}
+
+	&__items {
+		flex-grow: 1;
+		position: relative;
+		overflow: auto;
+	}
+
+	&__items-container {	
+		padding: 0 16px;
+		position: absolute;
+		width: 100%;
+		@include beforeTabletMax() {
+			padding: 0 14px;
+		}
+		@include beforeTablet() {
+			padding: 0 12px;
+		}
+		& .preloader {
+			display: flex;
+			margin-top: 10%;
+			align-self: center;
+		}
+	}
+}
+.order-item {
+	border: 0.5px solid $orderItemBorderColor;
+	border-radius: 6px;
+	@include beforeTabletMax() {
+		border-radius: 4px;
+	}
+	&:not(:last-child) {
+		margin-bottom: 15px;
+	}
+	&__container {
+		padding: 15.5px 10px;
+		display: flex;
+		justify-content: space-between;
+		@include beforeTabletMax() {
+			flex-direction: column;
+			padding: 11.5px 5px;
+		}
+		@include beforeTablet() {
+			padding: 7.7px 3px;
+		}
+		& > div {
+			flex-grow: 0;
+			flex-shrink: 0;
+			flex-basis: 18%;
+			@include beforeTabletMax() {
+				margin-bottom: 10px;
+			}
+			&:not(:last-child) {
+				@include beforeTabletMax() {
+					
+				}
+			}
+		}
+	}
+	&__img {
+		& img {
+			width: 200px;
+			@include beforeDesktopMax() {
+				width: 150px;
+			}
+			@include beforeTabletMax() {
+				width: 100px;
+			}
+		}
+	}
+
+	&__description {
+		display: flex;
+		flex-direction: column;
+		font-size: 13px;
+		@include beforeDesktopMax() {
+			font-size: 11px;
+		}
+		& > div:not(:last-child) {
+			margin-bottom: 6px;
+		}
+	}
+
+	&__description-date {
+		color: $orderItemGreyColor;
+
+	}
+
+	&__description-color {
+		&-title {
+			color: $orderItemGreyColor;
+		}
+	}
+
+	&__info {
+		@include beforeDesktopMax() {
+			font-size: 11px;
+		}
+		@include beforeTabletMax() {
+			font-size: 10px;
+		}
+	}
+	&__element-group {
+		&:not(:last-child) {
+			margin-bottom: 7px;
+			@include beforeDesktopMax() {
+				margin-bottom: 5px;
+			}
+			@include beforeTabletMax() {
+				margin-bottom: 4px;
+			}
+		}
+	}
+	&__price {
+		font-size: 24px;
+		color: black;
+		@include beforeDesktopMax() {
+			font-size: 18px;
+			flex-basis: 11% !important;
+		}
+		@include beforeTabletMax() {
+			font-size: 16px;
+		}
+		@include beforeTablet() {
+			font-size: 14px;
+		}
+	}
+
+	&__buttons {
+		flex-basis:content;
+		@include beforeTabletMax() {
+			display: flex;
+			justify-content: flex-end;
+		}
+		&-container	{
+			display: flex;
+			font-size: 11px;
+		}
+		&-item {
+			border: 0.5px solid $orderItemGreyColor;
+			&:first-child {
+				border-radius: 4px 0 0 4px;
+				border-right: none;
+			}
+			&:last-child {
+				border-radius: 0 4px 4px 0;
+				border-left: none;
+			}
+			& a {	
+				color: #5a6196;
+				padding: 5px 15px;
+				height: 100%;
+				display: flex;
+				align-items: center;;
+				@include beforeDesktopMax() {
+					padding: 3px 8px;
+				}
+				@include beforeMobile() {
+					padding: 3px 3px;
+					font-size: 9px;
+				}
+				&:hover {
+					background-color: $orderItemGreyColor;
+					color: $whiteColor;
+				}
+				&.complete:before {
+					content: url('./../../../../commons/images/main/orders/complete-icon.svg');					
+				}
+				&.reject:before {
+					content: url('./../../../../commons/images/main/orders/reject-icon.svg');
+				}
+				&.edit:before {
+					content: url('./.././/../../../commons/images/main/orders/edit-icon.svg');
+				}
+			}
+		}
+	}
+}

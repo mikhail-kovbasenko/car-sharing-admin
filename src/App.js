@@ -1,14 +1,19 @@
-import { Route, Switch } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import './App.scss';
 import Content from './components/Content/Content';
 import Login from './components/Login/Login';
 
-function App() {
+function App({history}) {
+  useEffect(() => {
+		history.push('/admin');
+  }, []);
+
   return (
     <div className="wrapper">
-		 <div className="content">
+		 <div className="content-page">
 			<Switch>
-				<Route exact path="/" component={Content}/>
+				<Route path="/admin" component={Content}/>
 				<Route path="/login" component={Login}/>
 			</Switch>
 		 </div>
@@ -16,4 +21,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);

@@ -1,4 +1,4 @@
-import authAPI from "../../api/api";
+import { authAPI } from "../../api/api";
 import { SET_IS_AUTH, TOGGLE_LOGIN_ERROR } from "../types";
 import { toggleModalActionCreator } from "./app";
 

@@ -50,7 +50,9 @@ const LoginForm = () => {
 										<div className="login__content-input-element">
 											<Field id="username" 
 													 name="username"
+													 autoFocus={true}
 													 className={errors.username && touched.username && 'error'} />
+										
 										</div>
 									</div>
 									<div className="login__content-input">

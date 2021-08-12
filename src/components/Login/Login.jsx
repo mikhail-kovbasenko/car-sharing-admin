@@ -10,7 +10,7 @@ const Login = () => {
 	const isAuth = useSelector(state => state.auth.isAuth);
 	const isModalOpen = useSelector(state => state.app.isModalOpen);
 
-	if(isAuth) return <Redirect to="/"/>
+	if(isAuth) return <Redirect to="/admin"/>
 
 	return (
 		<div className="login">
