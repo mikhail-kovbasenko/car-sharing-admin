@@ -1,12 +1,29 @@
 @import './../../styles/colors.scss';
+@import './../../styles/media.scss';
 
 .custom-settings {
 	padding: 15px 21.5px 14px 21.5px;
 	display: flex;
 	justify-content: space-between;
+	@include beforeDesktopMax() {
+		padding: 14px 19.5px 12px 19.5px
+	}
+	@include beforeTabletMax() {
+		padding: 12px 17px 10px 17px;
+	}
+	@include beforeTablet() {
+		padding: 8px 10px 6px 10px;
+	}
+	@include beforeMobile() {
+		padding: 6px 6px 4px 6px;
+	}
 	&__item {
 		&:not(:last-child) {
 			margin-right: 15px;
+			@include beforeTabletMax() {
+				margin-bottom: 5px;
+				margin-right: 0;
+			}
 		}
 		& > select {
 			padding: 8px 14px;
@@ -14,10 +31,22 @@
 			border-radius: 4px;
 			color: #868e96;
 			font-size: 11px;
+			width: 110.5px;
+			@include beforeTabletMax() {
+				padding: 6px 8px;
+				width: 80.5px;
+				font-size: 10px;
+			}
+			@include beforeTablet() {
+				padding: 2px 4px;
+			}
 		}
 	}
 	&__container {
 		display: flex;
 		justify-content: space-between;
+		@include beforeTabletMax() {
+			flex-direction: column;
+		}
 	}
 }

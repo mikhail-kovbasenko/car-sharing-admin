@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import CustomSettingsHeader from "../../../../commons/CustomSettingsHeader/CustomSettingsHeader";
 import Preloader from "../../../../commons/Preloader/Preloader";
 import { getOrdersFromServer } from "../../../../redux/reducers/orders";
 import MainContentContainer from "../MainContent/MainContentContainer";
@@ -18,33 +19,11 @@ const Orders = props => {
 									 changePage={changePage}
 		>
 			<div className="orders">
-				<div className="orders__settings">
-					<div className="orders__settings-container">
-						<div className="orders__settings-item">
-							<select >
-								<option value="За неделю">За неделю</option>
-							</select>
-						</div>
-						<div className="orders__settings-item">
-							<select >
-								<option value="Elantra">Elantra</option>
-							</select>
-						</div>
-						<div className="orders__settings-item">							
-							<select>
-								<option value="Ульяновск">Ульяновск</option>
-							</select>
-						</div>
-						<div className="orders__settings-item">
-							<select>
-								<option value="В процессе">В процессе</option>
-							</select>
-						</div>
-					</div>
+				<CustomSettingsHeader items={['За неделю', 'Elantra', 'Ульяновск', 'В процессе']}>
 					<div className="orders__settings-button">
 						<a href="#">Применить</a>
 					</div>
-				</div>
+				</CustomSettingsHeader>
 				<div className="orders__items">
 					<div className="orders__items-container">
 						{

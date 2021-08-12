@@ -9,10 +9,7 @@ import MainRouter from './MainRouter';
 
 
 const MainContainer = ({sidebarTitle, sidebarItem, history}) => {
-	const isFetching = useSelector(state => state.app.isFetching);
-	const getMainContentHeaderTitle = (bool = isFetching) => {
-		if(bool) return '';
-
+	const getMainContentHeaderTitle = () => {
 		const path = history.location.pathname;
 
 		switch(path) {
@@ -32,7 +29,7 @@ const MainContainer = ({sidebarTitle, sidebarItem, history}) => {
 			<div className="main__container">
 				<MainHeaderContainer sidebarTitle={sidebarTitle} sidebarItem={sidebarItem}/>
 				<div className="main__content">
-					<div className="main__content-header">{getMainContentHeaderTitle(isFetching)}</div>
+					<div className="main__content-header">{getMainContentHeaderTitle()}</div>
 					<MainRouter/>			
 				</div>
 				<MainFooter/>
