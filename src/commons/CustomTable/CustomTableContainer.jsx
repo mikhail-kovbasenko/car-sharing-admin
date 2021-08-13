@@ -1,8 +1,9 @@
 import { getCorrectImgSrc, getCorrectPriceFormat } from "../../utils/secondaryFunctions";
 import CustomTable from "./CustomTable";
 import defaultCar from './../../commons/images/main/orders/default-cars.jpeg';
+import { withRouter } from "react-router-dom";
 
-const CustomTableContainer = ({items, list}) => {
+const CustomTableContainer = ({items, list, handleClick}) => {
 	if(items.length < 1) return null;
 
 	const checkProp = (data, listItem) => {
@@ -59,8 +60,15 @@ const CustomTableContainer = ({items, list}) => {
 			};
 		}
 	}
+	const openCarPageById = id => {
 
-	return <CustomTable items={items} list={list} checkProp={checkProp}/>
+	}
+
+	return <CustomTable items={items} 
+							  list={list} 
+							  checkProp={checkProp} 
+							  handleClick={handleClick} 
+							/>
 }
 
 export default CustomTableContainer;
