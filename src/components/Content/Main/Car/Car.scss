@@ -1,0 +1,273 @@
+@import './../../../../styles/colors.scss';
+@import './../../../../styles/media.scss';
+
+@mixin modelPadding {
+	padding: 34.5px 0 22.5px 0;
+}
+
+.car {
+	height: 100%;
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		height: 100%;
+		& > div {
+			background-color: $whiteColor;
+			box-shadow: 0px 2px 4px rgba(90, 97, 105, 0.12);
+		}
+	}
+
+	&__model {
+		margin-right: 28px;
+		display: flex;
+		flex-direction: column;
+		align-self: flex-start;
+		position: relative;
+	}
+
+	&__model-img {
+		box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.12);
+		@include modelPadding();
+	}
+
+	&__model-img-image {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 10px;
+		& img {
+			width: 243px;
+		}
+	}
+
+	&__model-img-name {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		margin-bottom: 10.5px;
+	}
+
+	&__model-img-title {
+		font-size: 24.5px;
+		color: $defaultTextColor;
+		margin-bottom: 4.5px;
+	}
+
+	&__model-img-type {
+		font-size: 12.5px;
+		color: #818ea3;
+		letter-spacing: -0.3;
+	}
+
+	&__model-img-file {
+		&-wrapper {
+			& > input {
+				opacity: 0;
+				visibility: hidden;
+				position: absolute;
+			}
+			& > label {
+				width: 100%;
+				cursor: pointer;
+			}
+		}
+	}
+	&__model-input-file-button {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
+	&__model-input-file-item {
+		border: 0.5px solid $orderItemBorderColor;
+		width: 100%;
+		font-size: 10px;
+		padding: 8px 13px;
+		text-align: center;
+		color:#495057;
+		&:first-child {
+			text-align: left;
+			border-right: none;
+			border-radius: 4px 0px 0px 4px;
+		}
+		&:last-child {
+			border-left: none;
+			background-color: #E9ECEF;
+			width: 30%;
+			border-radius: 0px 4px 4px 0px;
+		}
+
+	}
+
+	&__model-filling {
+		display: flex;
+		flex-direction: column;
+		@include modelPadding();
+		padding: 14px 0 16px 0;
+	}
+
+	&__model-filling-title {
+		display: flex;
+		justify-content: space-between;
+		font-size: 13px;
+		margin-bottom: 10px;
+		&-text {
+			color: #868E96;
+		}
+		&-procent {
+			color: #5A6169;
+		}
+	}
+
+	&__model-filling-content {
+		&-wrapper {
+			box-shadow: inset 0px 0.5px 4px rgba(0, 0, 0, 0.25);
+			border-radius: 4px;
+		}
+		&-progress {
+			padding: 2px;
+			background-color: $loginFooterColor;
+			border-radius: 9px;
+			width: 75%;
+		}
+	}
+
+	&__model-description {
+		display: flex;
+		flex-direction: column;
+		box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.12);
+		padding: 22.5px 0 45px 0;
+	}
+
+	&__model-description-title {
+		font-weight: 500;
+		font-size: 13px;
+		color: #868E96;
+		margin-bottom: 13.5px;
+	}
+
+	&__model-description-text {
+		color: #5A6169;
+		font-size: 13.5px;
+		max-width: fit-content;
+		position: relative;
+		& p {
+  			word-break: break-all;
+			line-height: 19px;
+			letter-spacing: -0.4px;
+			text-align: left;
+		}
+	}
+	&__model-description-container {
+
+	}
+	&__settings {
+		flex-grow: 1;
+	}
+
+	&__settings-container {
+		height: 100%;
+		padding: 19.5px 18px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__settings-title {
+		font-weight: 500;
+		font-size: 17.5px;
+		letter-spacing: -0.4px;
+		color: $defaultTextColor;
+		margin-bottom: 42px;
+	}
+
+	&__settings-form {
+		flex-grow: 1;
+		&__content {
+			display: flex;
+			flex-direction: column;
+		}
+		&-item {
+			margin-bottom: 31px;
+			&-container {
+				display: flex;
+			}
+			&-field {
+				margin-right: 21px;
+				&-title {
+					font-size: 10.5px;
+					letter-spacing: -0.1px;	
+					margin-bottom: 4.5px;			
+				}
+				&-input {
+					display: flex;
+					&-plus {
+						padding: 7px;
+						border: 1px solid #BECAD6;
+						border-radius: 4px;
+						margin-right: 8px;
+						&:hover {
+							opacity: 0.6;
+							cursor: pointer;
+						}
+					}
+					& input {
+						padding: 8px 11px;
+						border: 1px solid $orderItemBorderColor;
+						border-radius: 4px;
+						font-size: 11px;
+						width: 320px;
+				
+						&.input-color {
+							margin-right: 8px;
+							width: 283px;
+						}
+					}
+					& img {
+						width: 16px;
+			
+					}
+				}
+			}
+		}
+	}
+
+	&__settings-footer {
+		&-container {
+			display: flex;
+			justify-content: space-between;
+		}
+		&-item {
+
+			&:last-child {
+				align-self: center;
+			}
+			&:first-child a:first-child {
+				margin-right: 12px;
+			}
+			
+			& a {
+				padding: 7.5px 25px;
+				border-radius: 4px;
+				font-size: 11.5px;
+				color: $whiteColor;
+				
+				&:hover {
+					opacity: 0.7;
+				}
+				&.save-button {
+					background-color: $loginFooterColor;
+				}
+				&.cancel-button {
+					background-color: #E9ECEF;
+					color: $defaultTextColor;
+				}
+				&.remove-button {
+					background-color: #CB3656;
+				}
+			}
+		}
+	}
+}
+.model-container {
+	padding-left: 22.5px;
+	padding-right: 22.5px;
+	
+}
