@@ -1,4 +1,5 @@
 import { ReactSVG } from 'react-svg';
+import FileInput from '../../../../../commons/FileInput/FileInput';
 import plus from './../../../../../commons/images/main/car/plus-signs-svgrepo-com.svg';
 import './../Car.scss';
 
@@ -38,6 +39,7 @@ const CarSettings = () => {
 								</div>
 							</div>
 						</div>
+						<FileInput secondClass={'settings'}/>
 					</div>
 				</div>
 				<div className="car__settings-footer">

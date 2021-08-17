@@ -1,6 +1,7 @@
 import './../Car.scss';
 import defaultCar from './../../../../../commons/images/main/orders/default-cars.jpeg';
 import styled from 'styled-components';
+import FileInput from '../../../../../commons/FileInput/FileInput';
 
 const CarModel = () => {
 	return (
@@ -13,17 +14,7 @@ const CarModel = () => {
 					<div className="car__model-img-title">Hyndai, i30 N</div>
 					<div className="car__model-img-type">Компакт-кар</div>
 				</div>
-				<div className="car__model-img-file">
-					<div className="car__model-img-file-wrapper">
-						<input type="file" id="car__model-input-file" />
-						<label htmlFor="car__model-input-file">
-							<div className="car__model-input-file-button">
-								<div className="car__model-input-file-item">Выберите файл...</div>
-								<div className="car__model-input-file-item">Обзор</div>
-							</div>
-						</label>
-					</div>
-				</div>
+				<FileInput secondClass={'model'}/>
 			</div>
 			<div className="car__model-filling model-container">
 				<div className="car__model-filling-title">

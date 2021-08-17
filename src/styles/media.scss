@@ -36,3 +36,6 @@ $desktop: 1400px;
 @mixin beforeMobile {
 	@media(max-width: 370px) {@content;}
 }
+@mixin before450 {
+	@media(max-width: 450px) {@content;}
+}
