@@ -1,9 +1,9 @@
-import { TOGGLE_IS_FETCHING, TOGGLE_IS_FETCHING_CONTENT, TOGGLE_MODAL } from "../types";
+import { TOGGLE_IS_ERROR, TOGGLE_IS_FETCHING, TOGGLE_IS_FETCHING_CONTENT, TOGGLE_MODAL } from "../types";
 
 const initialState = {
 	isModalOpen: false,
 	isFetching: false,
-	isFetchingContent: false
+	isFetchingContent: false,
 }
 
 const app = (state = initialState, action) => {
@@ -39,5 +39,6 @@ export const toggleIsFetchingContentActionCreator = bool => ({
 	type: TOGGLE_IS_FETCHING_CONTENT,
 	data: {bool}
 })
+
 
 export default app;

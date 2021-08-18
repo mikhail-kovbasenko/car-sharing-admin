@@ -43,7 +43,7 @@ const setCurrentPageActionCreator = page => ({
 })
 
 
-export const getOrdersFromServer = (token, limit, page, preloader = false) => dispatch => {
+export const getOrdersFromServer = (handleError, token, limit, page, preloader = false) => dispatch => {
 	if(!preloader) {
 		dispatch(toggleIsFetchingActionCreator(true));
 	} else {
@@ -59,7 +59,7 @@ export const getOrdersFromServer = (token, limit, page, preloader = false) => di
 			dispatch(toggleIsFetchingActionCreator(false));
 			dispatch(toggleIsFetchingContentActionCreator(false));
 		}
-	})
+	}, error => handleError(error))
 }
 
 export default orders;

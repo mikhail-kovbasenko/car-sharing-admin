@@ -27,12 +27,12 @@ const setCarActionCreator = data => ({
 })
 export const setNewCarActionCreator = () => ({type: SET_NEW_CAR});
 
-export const getCarById = (token, id) => dispatch => {
+export const getCarById = (token, id, handleError) => dispatch => {
 	mainAPI.getCar(token, id).then(response => {
 		if(response.status === 200) {
 			dispatch(setCarActionCreator(response.data.data));
 		}
-	})
+	}, error => handleError(error))
 }
 
 export default car;

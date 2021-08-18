@@ -42,7 +42,7 @@ const setCurrentPageCarActionCreator = page => ({
 	data: {page}
 })
 
-export const getCarsFromServer = (token, limit, page, preloader = false) => dispatch => {
+export const getCarsFromServer = (handleError, token, limit, page, preloader = false) => dispatch => {
 	if(!preloader) {
 		dispatch(toggleIsFetchingActionCreator(true));
 	} else {
@@ -56,7 +56,7 @@ export const getCarsFromServer = (token, limit, page, preloader = false) => disp
 			dispatch(toggleIsFetchingActionCreator(false));
 			dispatch(toggleIsFetchingContentActionCreator(false));
 		}
-	})
+	}, error => handleError(error))
 }
 
 export default cars;

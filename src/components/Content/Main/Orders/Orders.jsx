@@ -11,7 +11,7 @@ const Orders = props => {
 	const isFetching = useSelector(state => state.app.isFetchingContent);
 
 	const changePage = page => {
-		dispatch(getOrdersFromServer(props.token, props.itemsOnPage, page, true))
+		dispatch(getOrdersFromServer(props.handleError, props.token, props.itemsOnPage, page, true))
 	}
 	return (
 		<MainContentContainer totalCount={props.itemsCount}
