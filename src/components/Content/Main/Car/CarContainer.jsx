@@ -41,7 +41,7 @@ const CarContainer = ({match}) => {
 	}, [])
 	useEffect(() => {
 		if(car && !Array.isArray(car) && typeof car === 'object') {
-			console.log(car);
+
 			const {name, number, priceMax, priceMin, categoryId} = car;
 			const type = categoryId ? categoryId.name : '';
 
@@ -50,7 +50,7 @@ const CarContainer = ({match}) => {
 			return () => dispatch(setNewCarActionCreator());
 		}
 	}, [car]);
-	console.log(formData);
+
 	return !car ? <Preloader/> : <Car 
 												color={colorRef}
 												addColor={addNewColorItem}

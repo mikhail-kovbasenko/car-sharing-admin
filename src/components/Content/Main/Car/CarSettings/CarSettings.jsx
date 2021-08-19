@@ -9,7 +9,7 @@ const CarSettings = ({ addColor, formData }) => {
 			<Formik
 				initialValues={formData}
 				onSubmit={values => {
-					console.log(values);
+					
 				}}
 				enableReinitialize={true}
 			>
