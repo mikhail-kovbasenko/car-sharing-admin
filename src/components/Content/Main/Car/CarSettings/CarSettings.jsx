@@ -1,59 +1,95 @@
-import { ReactSVG } from 'react-svg';
+import { Formik, Form, Field } from 'formik';
 import FileInput from '../../../../../commons/FileInput/FileInput';
 import plus from './../../../../../commons/images/main/car/plus-signs-svgrepo-com.svg';
 import './../Car.scss';
 
-const CarSettings = () => {
+const CarSettings = ({ addColor, formData }) => {
 	return (
 		<div className="car__settings">
-			<div className="car__settings-container">
-				<div className="car__settings-title">Настройки автомобиля</div>
-				<div className="car__settings-form">
-					<div className="car__settings-form__content">
-						<div className="car__settings-form-item">
-							<div className="car__settings-form-item-container">
-								<div className="car__settings-form-item-field">
-									<div className="car__settings-form-item-field-title">Модель автомобиля</div>
-									<div className="car__settings-form-item-field-input">
-										<input type="text" />
-									</div>
-								</div>
-								<div className="car__settings-form-item-field">
-									<div className="car__settings-form-item-field-title">Тип автомобиля</div>
-									<div className="car__settings-form-item-field-input">
-										<input type="text" />
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className="car__settings-form-item">
-							<div className="car__settings-form-item-container">
-								<div className="car__settings-form-item-field">
-									<div className="car__settings-form-item-field-title">Доступные цвета</div>
-									<div className="car__settings-form-item-field-input">
-										<input type="text" className="input-color"/>
-										<div className="car__settings-form-item-field-input-plus">
-											<img src={plus} alt="plus-icon"/>
+			<Formik
+				initialValues={formData}
+				onSubmit={values => {
+					console.log(values);
+				}}
+				enableReinitialize={true}
+			>
+				<Form>
+					<div className="car__settings-container">
+						<div className="car__settings-title">Настройки автомобиля</div>
+						<div className="car__settings-form">
+							<div className="car__settings-form__content">
+								<div className="car__settings-form-item">
+									<div className="car__settings-form-item-container">
+										<div className="car__settings-form-item-field">
+											<div className="car__settings-form-item-field-title">Модель автомобиля</div>
+											<div className="car__settings-form-item-field-input">
+												<Field name="name" />
+											</div>
+										</div>
+										<div className="car__settings-form-item-field">
+											<div className="car__settings-form-item-field-title">Тип автомобиля</div>
+											<div className="car__settings-form-item-field-input">
+												<Field name="type" />
+											</div>
+										</div>
+										<div className="car__settings-form-item-field">
+											<div className="car__settings-form-item-field-title">Номер автомобиля</div>
+											<div className="car__settings-form-item-field-input">
+												<Field name="number" />
+											</div>
 										</div>
 									</div>
 								</div>
+								<div className="car__settings-form-item">
+									<div className="car__settings-form-item-container">
+										<div className="car__settings-form-item-field">
+											<div className="car__settings-form-item-field-title">Доступные цвета</div>
+											<div className="car__settings-form-item-field-input">
+												<Field className="input-color" name="color"/>
+												<Field>
+													{
+														({field}) => {
+															return (
+																<div className="car__settings-form-item-field-input-plus" onClick={() => addColor(field.value.color)}>
+																	<img src={plus} alt="plus-icon" />
+																</div>
+															)
+														}
+													}
+												</Field>
+											</div>
+										</div>
+										<div className="car__settings-form-item-field">
+											<div className="car__settings-form-item-field-title">Минимальная цена</div>
+											<div className="car__settings-form-item-field-input">
+												<Field name="priceMin" />
+											</div>
+										</div>
+										<div className="car__settings-form-item-field">
+											<div className="car__settings-form-item-field-title">Максимальная цена</div>
+											<div className="car__settings-form-item-field-input">
+												<Field name="priceMax" />
+											</div>
+										</div>
+									</div>
+								</div>
+								<FileInput secondClass={'settings'} />
 							</div>
 						</div>
-						<FileInput secondClass={'settings'}/>
-					</div>
-				</div>
-				<div className="car__settings-footer">
-					<div className="car__settings-footer-container">
-						<div className="car__settings-footer-item">
-							<a href="#" className="save-button">Сохранить</a>
-							<a href="#" className="cancel-button">Отменить</a>
+						<div className="car__settings-footer">
+							<div className="car__settings-footer-container">
+								<div className="car__settings-footer-item">
+									<button type="submit" className="save-button">Сохранить</button>
+									<a href="#" className="cancel-button">Отменить</a>
+								</div>
+								<div className="car__settings-footer-item">
+									<a href="#" className="remove-button">Удалить</a>
+								</div>
+							</div>
 						</div>
-						<div className="car__settings-footer-item">
-							<a href="#" className="remove-button">Удалить</a>
-						</div>
 					</div>
-				</div>
-			</div>
+				</Form>
+			</Formik>
 		</div>
 	)
 }

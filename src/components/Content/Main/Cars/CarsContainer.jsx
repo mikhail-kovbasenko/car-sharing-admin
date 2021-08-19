@@ -5,6 +5,7 @@ import Preloader from "../../../../commons/Preloader/Preloader";
 import { getCarsFromServer } from "../../../../redux/reducers/cars";
 import Cars from "./Cars";
 import { useErrorHandler } from "react-error-boundary";
+import { useRef } from "react";
 
 const CarsContainer = ({history}) => {
 	const dispatch = useDispatch();

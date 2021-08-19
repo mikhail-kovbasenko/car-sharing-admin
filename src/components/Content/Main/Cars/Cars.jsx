@@ -8,7 +8,7 @@ import { getTableData } from "../../../../utils/secondaryFunctions";
 import MainContentContainer from "../MainContent/MainContentContainer";
 import './Cars.scss';
 
-const Cars = ({ items, itemsOnPage, itemsCount, token, openCar, handleError }) => {
+const Cars = ({ items, itemsOnPage, itemsCount, token, openCar, handleError, refs }) => {
 	const dispatch = useDispatch();
 	const isFetching = useSelector(state => state.app.isFetchingContent);
 	const changePage = page => {
