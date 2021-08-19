@@ -1,8 +1,8 @@
-import nextId from "react-id-generator";
+import nextId from "react-id-generator"
 
-const CustomRow = ({item, list, checkProp}) => {
+const CustomRow = ({item, list, checkProp, handleClick}) => {
 	return (
-		<tr>
+		<tr onClick={() => handleClick(item.id)}>
 			{
 				list.map(listItem => {		
 					const keyId = nextId();
@@ -14,4 +14,4 @@ const CustomRow = ({item, list, checkProp}) => {
 	)
 }
 
-export default CustomRow;
+export default  CustomRow;

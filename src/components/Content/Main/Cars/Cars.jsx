@@ -8,7 +8,7 @@ import { getTableData } from "../../../../utils/secondaryFunctions";
 import MainContentContainer from "../MainContent/MainContentContainer";
 import './Cars.scss';
 
-const Cars = ({ items, itemsOnPage, itemsCount, token }) => {
+const Cars = ({ items, itemsOnPage, itemsCount, token, openCar }) => {
 	const dispatch = useDispatch();
 	const isFetching = useSelector(state => state.app.isFetchingContent);
 
@@ -46,7 +46,7 @@ const Cars = ({ items, itemsOnPage, itemsCount, token }) => {
 				{
 					isFetching
 					? <Preloader/>
-					:  <CustomTableContainer items={items} list={propsList}/>
+					: <CustomTableContainer items={items} list={propsList} handleClick={openCar}/>
 				}
 			</div>
 		</MainContentContainer>

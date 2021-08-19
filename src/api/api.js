@@ -29,6 +29,11 @@ export const mainAPI = {
 		return axios.get(`${defaultURL}db/car?page=${page}&limit=${limit}`, {
 			headers: {...getDefaultHeaders(token)}
 		})
+	},
+	getCar(token, id) {
+		return axios.get(`${defaultURL}db/car/${id}`, {
+			headers: {...getDefaultHeaders(token)}
+		})
 	}
 }
 

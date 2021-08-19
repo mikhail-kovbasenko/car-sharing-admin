@@ -9,3 +9,5 @@ export const SET_CURRENT_PAGE = 'set-current-page';
 export const SET_CARS = 'set-cars';
 export const SET_CARS_COUNT = 'set-cars-count';
 export const SET_CURRENT_PAGE_CAR = 'set-current-page-car';
+export const SET_CAR = 'set-car';
+export const SET_NEW_CAR = 'set-new-car';

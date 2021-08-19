@@ -1,20 +1,23 @@
 import { withRouter } from 'react-router-dom';
 import './Main.scss';
-import MainHeaderContainer from './MainHeader/MainHeaderContainer';
 import { useEffect } from 'react';
-import MainFooter from './MainFooter/MainFooter';
-import { useSelector } from 'react-redux';
-import MainRouter from './MainRouter';
+import Main from './Main';
 
 
 
 const MainContainer = ({sidebarTitle, sidebarItem, history}) => {
 	const getMainContentHeaderTitle = () => {
 		const path = history.location.pathname;
+		const type = (path => {
+			if(path.split('/').length > 3) return path.slice(0, path.lastIndexOf('/'));
 
-		switch(path) {
+			return path;
+		})(path);
+
+		switch(type) {
 			case '/admin/orders': return 'Заказы';
 			case '/admin/cars': return 'Автомобили';
+			case '/admin/car': return 'Карточка автомобиля';
 			default: return '';
 		}
 	}
@@ -24,18 +27,7 @@ const MainContainer = ({sidebarTitle, sidebarItem, history}) => {
 			history.push('/admin/orders');
 		}
 	}, []);
-	return (
-		<div className="main">
-			<div className="main__container">
-				<MainHeaderContainer sidebarTitle={sidebarTitle} sidebarItem={sidebarItem}/>
-				<div className="main__content">
-					<div className="main__content-header">{getMainContentHeaderTitle()}</div>
-					<MainRouter/>			
-				</div>
-				<MainFooter/>
-			</div>
-		</div>
-	)
+	return <Main sidebarItem={sidebarItem} sidebarTitle={sidebarTitle} getMainContentHeaderTitle={getMainContentHeaderTitle}/>
 }
 
 
