@@ -28,6 +28,8 @@ const MainContainer = ({sidebarTitle, sidebarItem, history}) => {
 		}
 	}, []);
 	return <Main sidebarItem={sidebarItem} sidebarTitle={sidebarTitle} getMainContentHeaderTitle={getMainContentHeaderTitle}/>
+		
+	
 }
 
 

@@ -8,12 +8,11 @@ import { getTableData } from "../../../../utils/secondaryFunctions";
 import MainContentContainer from "../MainContent/MainContentContainer";
 import './Cars.scss';
 
-const Cars = ({ items, itemsOnPage, itemsCount, token, openCar }) => {
+const Cars = ({ items, itemsOnPage, itemsCount, token, openCar, handleError }) => {
 	const dispatch = useDispatch();
 	const isFetching = useSelector(state => state.app.isFetchingContent);
-
 	const changePage = page => {
-		dispatch(getCarsFromServer(token, itemsOnPage, page, true));
+		dispatch(getCarsFromServer(handleError, token, itemsOnPage, page, true));
 	}
 	const propsList = useMemo(() => getTableData([
 		['ID', 'id'],
@@ -28,7 +27,6 @@ const Cars = ({ items, itemsOnPage, itemsCount, token, openCar }) => {
 		['Дата последнего изменения', 'updatedAt', 'date'],
 		['Фото', 'thumbnail.path', 'img']
 	]));
-	
 	return (
 		<MainContentContainer itemsOnPage={itemsOnPage}
 									 totalCount={itemsCount}

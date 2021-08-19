@@ -115,6 +115,10 @@
 		flex-grow: 1;
 		display: flex;
 		flex-direction: column;
+		& .error-page {
+			align-self: center;
+			margin: auto;
+		}
 		@include beforeTablet() {
 			padding: 18.5px 21.5px;
 		}

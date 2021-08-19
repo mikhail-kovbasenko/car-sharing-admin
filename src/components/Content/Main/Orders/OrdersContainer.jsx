@@ -4,6 +4,7 @@ import Preloader from "../../../../commons/Preloader/Preloader";
 import { toggleIsFetchingActionCreator } from "../../../../redux/reducers/app";
 import { getOrdersFromServer } from "../../../../redux/reducers/orders";
 import Orders from "./Orders"
+import { useErrorHandler } from "react-error-boundary";
 
 const OrdersContainer = () => {
 	const dispatch = useDispatch();
@@ -13,9 +14,10 @@ const OrdersContainer = () => {
 	const currentPage = useSelector(state => state.orders.currentPage);
 	const itemsCount = useSelector(state => state.orders.itemsCount);
 	const orders = useSelector(state => state.orders.items);
+	const handleError = useErrorHandler();
 	
 	useEffect(() => {
-		dispatch(getOrdersFromServer(token, itemsOnPage, currentPage));
+		dispatch(getOrdersFromServer(handleError, token, itemsOnPage, currentPage));
 	}, [])
 	return (
 			!orders
@@ -26,6 +28,7 @@ const OrdersContainer = () => {
 						 items={orders}
 						 token={token}
 						 itemsOnPage={itemsOnPage}
+						 handleError={handleError}
 					  />
 	)
 			 
