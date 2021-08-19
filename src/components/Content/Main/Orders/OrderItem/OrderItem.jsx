@@ -1,14 +1,12 @@
 import './../Orders.scss';
 import defaultCar from './../../../../../commons/images/main/orders/default-cars.jpeg';
-import { getCorrectSrcImg } from '../../../../../utils/correctImgSrc';
-import { getCorrectDatetimeFormat } from '../../../../../utils/correctDatetimeFormat';
-
+import { getCorrectDatetimeFormat, getCorrectImgSrc, getCorrectPriceFormat } from '../../../../../utils/secondaryFunctions';
 const OrderItem = ({ data }) => {
 	const getSrcForImg = car => {
 		try {
 			const path = car.thumbnail.path;
 
-			return getCorrectSrcImg(path);
+			return getCorrectImgSrc(path);
 		} catch (e) {
 			return defaultCar;
 		}
@@ -56,9 +54,6 @@ const OrderItem = ({ data }) => {
 			return 'Некорректная дата';
 		}
 	}
-	const getCorrectPriceFormat = price => {
-		return `${new Intl.NumberFormat('ru').format(price)} ₽`;
-	}
 	return (
 		<div className="order-item">
 			<div className="order-item__container">
@@ -95,7 +90,7 @@ const OrderItem = ({ data }) => {
 						</div>
 					</div>
 				</div>
-				<div className="order-item__price">{getCorrectPriceFormat(data.price)}</div>
+				<div className="order-item__price">{`${getCorrectPriceFormat(data.price)} ₽`}</div>
 				<div className="order-item__buttons">
 					<div className="order-item__buttons-container">
 						<div className="order-item__buttons-item">

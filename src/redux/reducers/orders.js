@@ -1,13 +1,9 @@
 import { mainAPI } from "../../api/api";
+import { defaultPageSettings } from "../../utils/defaultPageSettings";
 import { SET_CURRENT_PAGE, SET_ORDERS, SET_ORDERS_COUNT } from "../types";
 import { toggleIsFetchingActionCreator, toggleIsFetchingContentActionCreator } from "./app";
 
-const initialState = {
-	items: null,
-	itemsCount: 0,
-	itemsOnPage: 20,
-	currentPage: 1
-}
+const initialState = {...defaultPageSettings}
 
 const orders = (state = initialState, action) => {
 	switch(action.type) {

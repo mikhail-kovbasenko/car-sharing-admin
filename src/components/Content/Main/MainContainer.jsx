@@ -9,11 +9,14 @@ import MainRouter from './MainRouter';
 
 
 const MainContainer = ({sidebarTitle, sidebarItem, history}) => {
-	const isFetching = useSelector(state => state.app.isFetching);
-	const getMainContentHeaderTitle = (bool = isFetching) => {
-		if(!bool) return 'Заказы';
+	const getMainContentHeaderTitle = () => {
+		const path = history.location.pathname;
 
-		return 'Заказы';
+		switch(path) {
+			case '/admin/orders': return 'Заказы';
+			case '/admin/cars': return 'Автомобили';
+			default: return '';
+		}
 	}
 	useEffect(() => {
 		const path = history.location.pathname;
@@ -26,7 +29,7 @@ const MainContainer = ({sidebarTitle, sidebarItem, history}) => {
 			<div className="main__container">
 				<MainHeaderContainer sidebarTitle={sidebarTitle} sidebarItem={sidebarItem}/>
 				<div className="main__content">
-					<div className="main__content-header">{getMainContentHeaderTitle(isFetching)}</div>
+					<div className="main__content-header">{getMainContentHeaderTitle()}</div>
 					<MainRouter/>			
 				</div>
 				<MainFooter/>
