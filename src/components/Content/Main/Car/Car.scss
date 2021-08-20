@@ -77,7 +77,7 @@
 			justify-content: start;
 		}
 		@include before450() {
-			justify-content: center;
+			justify-content: flex-start;
 		}
 		& img {
 			width: 243px;
@@ -85,10 +85,10 @@
 				width: 200px;
 			}
 			@include beforeTabletMax() {
-				width: 80%;
+				width: 70%;
 			}
 			@include before450() {
-				width: 50%;
+				width: 20%;
 			}
 		}
 	}
@@ -341,6 +341,9 @@
 		padding: 19.5px 18px;
 		display: flex;
 		flex-direction: column;
+		@include before450() {
+			padding: 10px 12px;
+		}
 	}
 
 	&__settings-title {
@@ -352,6 +355,10 @@
 		@include beforeDesktopMax() {
 			font-size: 14px;
 			margin-bottom: 25px;
+		}
+		@include beforeTabletMax() {
+			font-size: 14px;
+			margin-bottom: 12px;
 		}
 	}
 
@@ -371,22 +378,30 @@
 			&-container {
 				display: flex;
 				justify-content: space-between;
-				@include beforeTabletMax() {
+				@include before450() {
 					flex-direction: column;
 				}
 			}
 			&-field {
 				width: 30%;
+				
 				@include beforeTabletMax() {
 					margin-right: 0;
 					&:first-child {
 						margin-bottom: 10px;
 					}
 				}
+				@include before450() {
+					width: 50%;
+					margin-bottom: 0;
+				}
 				&-title {
 					font-size: 10.5px;
 					letter-spacing: -0.1px;	
-					margin-bottom: 4.5px;			
+					margin-bottom: 4.5px;	
+					@include before450() {
+						//margin-bottom: 2px;
+					}		
 				}
 				&-input {
 					display: flex;
@@ -416,8 +431,7 @@
 							padding: 6px 9px;
 				
 						}
-						@include before450() {
-
+						@include before450() {	
 							padding: 4px 7px;
 						}
 						&.input-color {
@@ -446,6 +460,7 @@
 		&-container {
 			display: flex;
 			justify-content: space-between;
+			
 		}
 		&-item {
 			&:first-child {
@@ -486,6 +501,9 @@
 				&.save-button {
 					background-color: $loginFooterColor;
 					margin-right: 12px;
+					@include before450() {
+						margin-bottom: 3px;
+					}
 				}
 				&.cancel-button {
 					background-color: #E9ECEF;
