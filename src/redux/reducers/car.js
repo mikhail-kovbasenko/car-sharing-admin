@@ -1,5 +1,6 @@
 import { mainAPI } from "../../api/api";
 import { ADD_COLOR_ITEM, SET_CAR, SET_NEW_CAR } from "../types";
+import { toggleIsFetchingContentActionCreator } from "./app";
 
 const initialState = {
 	item: null,
@@ -44,9 +45,12 @@ export const addNewColorItemActionCreator = item => ({
 })
 
 export const getCarById = (token, id, handleError) => dispatch => {
+	dispatch(toggleIsFetchingContentActionCreator(true));
+
 	mainAPI.getCar(token, id).then(response => {
 		if(response.status === 200) {
 			dispatch(setCarActionCreator(response.data.data));
+			dispatch(toggleIsFetchingContentActionCreator(false));
 		}
 	}, error => handleError(error))
 }
