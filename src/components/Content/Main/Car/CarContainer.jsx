@@ -16,15 +16,16 @@ const CarContainer = ({match}) => {
 		number: '',
 	}
 	const [formData, setFormData] = useState(defaultState);
+	const dispatch = useDispatch();
 
 	const token = useSelector(state => state.auth.access);
 	const car = useSelector(state => state.car.item);
+	const isFetching = useSelector(state => state.app.isFetchingContent);
 	const colorItemCurrentId = useSelector(state => state.car.colorItemCurrentId);
 
 	const colorRef = useRef();
 
 	const handleError = useErrorHandler();
-	const dispatch = useDispatch();
 
 	const addNewColorItem = value => {
 		dispatch(addNewColorItemActionCreator({
@@ -50,8 +51,8 @@ const CarContainer = ({match}) => {
 			return () => dispatch(setNewCarActionCreator());
 		}
 	}, [car]);
-
-	return !car ? <Preloader/> : <Car 
+	
+	return !car || isFetching ? <Preloader/> : <Car 
 												color={colorRef}
 												addColor={addNewColorItem}
 												formData={formData}
