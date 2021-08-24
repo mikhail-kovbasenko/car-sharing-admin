@@ -1,10 +1,12 @@
-import { ADD_COLOR_ITEM, SET_CAR, SET_NEW_CAR, TOGGLE_COLOR_CHECKBOX } from "../../types";
+import { ADD_COLOR_ITEM, SET_CAR, SET_CAR_DESCRIPTION, SET_CAR_IMG, SET_NEW_CAR, TOGGLE_COLOR_CHECKBOX } from "../../types";
 
 const initialState = {
 	item: null,
 	colorItems: [],
 	colorItemCurrentId: 0,
 	fillingProcent: 0,
+	description: null,
+	img: null
 }
 
 const car = (state = initialState, action) => {
@@ -17,7 +19,7 @@ const car = (state = initialState, action) => {
 		}
 		case SET_NEW_CAR: {
 			return {
-				...state,
+				...initialState, 
 				item: []
 			}
 		}
@@ -38,6 +40,18 @@ const car = (state = initialState, action) => {
 			return {
 				...state,
 				colorItems
+			}
+		}
+		case SET_CAR_DESCRIPTION: {
+			return {
+				...state,
+				description: action.data.text
+			}
+		}
+		case SET_CAR_IMG: {
+			return {
+				...state,
+				img: action.data.img
 			}
 		}
 		default: return state;

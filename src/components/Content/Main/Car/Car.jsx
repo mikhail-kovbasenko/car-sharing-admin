@@ -1,12 +1,12 @@
 import './Car.scss';
-import CarModel from './CarModel/CarModel';
+import CarModelContainer from './CarModel/CarModelContainer';
 import CarSettings from './CarSettings/CarSettings';
 
-const Car = ({color, addColor, formData, procent, calculate, colorItems,toggleCheckbox, description}) => {
+const Car = ({color, addColor, formData, procent, calculate, colorItems,toggleCheckbox, img, description, imgRef, name, type, changeImg}) => {
 	return (
 		<div className="car">
 			<div className="car__container">
-				<CarModel procent={procent} description={description}/>
+				<CarModelContainer procent={procent} description={description} imgRef={imgRef} img={img} name={name} type={type} changeImg={changeImg}/>
 				<CarSettings color={color} addColor={addColor} formData={formData} calculate={calculate} colorItems={colorItems} toggleCheckbox={toggleCheckbox}/>
 			</div>
 		</div>

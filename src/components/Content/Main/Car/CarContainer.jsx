@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Preloader from "../../../../commons/Preloader/Preloader";
-import { addNewColorItemActionCreator, getCarById, setNewCarActionCreator, toggleColorCheckboxActionCreator } from "../../../../redux/reducers/car/action-creators-car";
+import { addNewColorItemActionCreator, getCarById, setCarImgActionCreator, setNewCarActionCreator, toggleColorCheckboxActionCreator } from "../../../../redux/reducers/car/action-creators-car";
 import Car from "./Car";
 import { useErrorHandler } from "react-error-boundary";
+import defaultCar from './../../../../commons/images/main/orders/default-cars.jpeg';
 
 const CarContainer = ({match}) => {
 	const defaultState = {
@@ -15,7 +16,18 @@ const CarContainer = ({match}) => {
 		priceMax: '',
 		number: '',
 	}
-	const defaultStateFilling = [...Object.entries(defaultState), ['description', ''], ['img', ''], ['checkedColor', []]];
+
+	const dispatch = useDispatch();
+
+	const token = useSelector(state => state.auth.access);
+	const car = useSelector(state => state.car.item);
+	const description = useSelector(state => state.car.description);
+	const isFetching = useSelector(state => state.app.isFetchingContent);
+	const colorItemCurrentId = useSelector(state => state.car.colorItemCurrentId);
+	const colorItems = useSelector(state => state.car.colorItems);
+	const img = useSelector(state => state.car.img);
+
+	const defaultStateFilling = [...Object.entries(defaultState), ['description', description], ['img', ''], ['checkedColor', []]];
 	const defaultStateFillingConvert = Object.fromEntries(defaultStateFilling);
 	delete defaultStateFillingConvert['color'];
 
@@ -23,14 +35,8 @@ const CarContainer = ({match}) => {
 	const [fillData, setFillData] = useState(defaultStateFillingConvert);
 	const [procent, setProcent] = useState(0);
 
-	const dispatch = useDispatch();
-	const token = useSelector(state => state.auth.access);
-	const car = useSelector(state => state.car.item);
-	const isFetching = useSelector(state => state.app.isFetchingContent);
-	const colorItemCurrentId = useSelector(state => state.car.colorItemCurrentId);
-	const colorItems = useSelector(state => state.car.colorItems);
-
 	const colorRef = useRef();
+	const imgRef = useRef();
 
 	const handleError = useErrorHandler();
 	const addNewColorItem = prop => {
@@ -49,7 +55,6 @@ const CarContainer = ({match}) => {
 			}
 			if(!Array.isArray(item) && item !== '') return item;
 		});
-		console.log(noEmptyValues);
 		const procent = Math.trunc((noEmptyValues.length * 100) / valuesLength);
 
 		setProcent(procent);
@@ -79,6 +84,22 @@ const CarContainer = ({match}) => {
 		})
 		dispatch(toggleColorCheckboxActionCreator(value))
 	}
+	const changeImg = event => {
+		const file = event.target.files[0];
+		const reader = new FileReader();
+
+		reader.onloadend = () => {
+			imgRef.current.src = reader.result;
+		}
+
+		if(file) {
+			reader.readAsDataURL(file);
+			setFillData({...fillData, img: imgRef.current.src});
+			dispatch(setCarImgActionCreator({path: imgRef.current.src}))
+		} else {
+			imgRef.current.src = defaultCar;
+		}
+	}
 	useEffect(() => {
 		calculateFillingProcent()
 	}, [fillData])
@@ -98,7 +119,13 @@ const CarContainer = ({match}) => {
 			return () => dispatch(setNewCarActionCreator());
 		}
 	}, [car]);
-	//console.log(fillData);
+	useEffect(() => {
+		if(description || img) {
+			setFillData({...fillData, description, img: img});
+		}
+	}, [description, img])
+
+	console.log(fillData);
 	return !car || isFetching ? <Preloader/> : <Car 
 												color={colorRef}
 												addColor={addNewColorItem}
@@ -107,7 +134,12 @@ const CarContainer = ({match}) => {
 												calculate={setNewFillDataState}
 												colorItems={colorItems}
 												toggleCheckbox={changeColorCheckboxValue}
-												description={car.description}
+												description={description}
+												imgRef={imgRef}
+												img={img}
+												name={fillData.name}
+												type={fillData.type}
+												changeImg={changeImg}
 											/>
 }
 
