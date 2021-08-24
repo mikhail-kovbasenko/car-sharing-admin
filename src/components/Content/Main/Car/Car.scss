@@ -82,10 +82,10 @@
 		& img {
 			width: 243px;
 			@include beforeDesktopMax() {
-				width: 200px;
+				width: 70%;
 			}
 			@include beforeTabletMax() {
-				width: 70%;
+				width: 50%;
 			}
 			@include before450() {
 				width: 20%;
@@ -182,6 +182,9 @@
 		padding: 8px 13px;
 		text-align: center;
 		color:#495057;
+		@include beforeDesktopMax() {
+			padding: 4px 7px;
+		}
 		@include beforeTabletMax() {
 			padding: 4px 6px;
 		}
@@ -255,6 +258,9 @@
 		flex-direction: column;
 		box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.12);
 		padding: 22.5px 0 45px 0;
+		@include beforeDesktopMax() {
+			padding: 18px 0 25px 0;
+		}
 		@include beforeTabletMax() {
 			padding: 14.5px 0 0 0;
 		}
@@ -371,7 +377,11 @@
 		}
 		&-item {
 			margin-bottom: 31px;
-			
+			position: relative;
+			overflow: auto;
+			&.colors {
+				height: 100px;
+			}
 			@include beforeTabletMax() {
 				margin-bottom: 15px;
 			}
@@ -449,6 +459,12 @@
 						}
 					}
 				}
+			}
+			&-color-container {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				height: 100%;
 			}
 		}
 	}

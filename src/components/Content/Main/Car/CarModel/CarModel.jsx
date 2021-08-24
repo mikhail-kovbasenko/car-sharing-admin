@@ -3,7 +3,7 @@ import defaultCar from './../../../../../commons/images/main/orders/default-cars
 import styled from 'styled-components';
 import FileInput from '../../../../../commons/FileInput/FileInput';
 
-const CarModel = () => {
+const CarModel = ({procent, description}) => {
 	return (
 		<div className="car__model">
 			<div className="car__model-img model-container">
@@ -19,11 +19,11 @@ const CarModel = () => {
 			<div className="car__model-filling model-container">
 				<div className="car__model-filling-title">
 					<div className="car__model-filling-title-text">Заполнено</div>
-					<div className="car__model-filling-title-procent">15%</div>
+					<div className="car__model-filling-title-procent">{procent}%</div>
 				</div>
 				<div className="car__model-filling-content">
 					<div className="car__model-filling-content-wrapper">
-						<ProgressInput width={15} className="car__model-filling-content-progress" />
+						<ProgressInput width={procent} className="car__model-filling-content-progress" />
 					</div>
 				</div>
 			</div>
@@ -31,7 +31,8 @@ const CarModel = () => {
 				<div className="car__model-description-title">Описание</div>
 				<div className="car__model-description-text">
 					<div className="car__model-description-container">
-					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga tempora debitis ipsam a dolore temporibus repellat sit omnis quidem tenetur perferendis, sequi, ex qui, obcaecati quis doloribus ut voluptas veritatis.
+					<p>
+						{description}
 					</p>
 					</div>
 				</div>

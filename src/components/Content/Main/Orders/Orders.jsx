@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import CustomSettingsHeader from "../../../../commons/CustomSettingsHeader/CustomSettingsHeader";
 import Preloader from "../../../../commons/Preloader/Preloader";
-import { getOrdersFromServer } from "../../../../redux/reducers/orders";
+import { getOrdersFromServer } from "../../../../redux/reducers/orders/action-creators-orders";
 import MainContentContainer from "../MainContent/MainContentContainer";
 import OrderItem from "./OrderItem/OrderItem";
 import './Orders.scss';
