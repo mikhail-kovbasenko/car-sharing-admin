@@ -31,6 +31,7 @@ export const getCarById = (token, id, handleError) => dispatch => {
 		if(response.status === 200) {
 			dispatch(setCarActionCreator(response.data.data));
 			dispatch(setCarDescriptionActionCreator(response.data.data.description));
+			console.log(response.data.data.description);
 			dispatch(setCarImgActionCreator(response.data.data.thumbnail))
 			dispatch(toggleIsFetchingContentActionCreator(false));
 		}
