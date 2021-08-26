@@ -1,0 +1,14 @@
+export const SET_IS_AUTH = 'set-is-auth';
+export const TOGGLE_MODAL = 'toggle-modal';
+export const TOGGLE_LOGIN_ERROR = 'toggle-login-error';
+export const SET_ORDERS_COUNT = 'set-orders-count';
+export const SET_ORDERS = 'set-orders';
+export const TOGGLE_IS_FETCHING = 'toggle-is-fetching';
+export const TOGGLE_IS_FETCHING_CONTENT = 'toggle-is-fetching-content';
+export const SET_CURRENT_PAGE = 'set-current-page';
+export const SET_CARS = 'set-cars';
+export const SET_CARS_COUNT = 'set-cars-count';
+export const SET_CURRENT_PAGE_CAR = 'set-current-page-car';
+export const SET_CAR = 'set-car';
+export const SET_NEW_CAR = 'set-new-car';
+export const ADD_COLOR_ITEM = 'add-color-item';

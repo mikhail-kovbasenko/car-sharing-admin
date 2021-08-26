@@ -1,0 +1,117 @@
+@import './../../../styles/colors.scss';
+@import './../../../styles/media.scss';
+
+.sidebar {
+	width: 15%;
+	color: $defaultTextColor;
+	@include beforeTablet() {
+		width: 10%;
+	}
+	&__container {
+		width: 100%;
+		height: 100%;
+		background-color: $whiteColor;
+		box-shadow: 0px 1px 75px rgba(90, 97, 105, 0.11),
+		 				0px 2px 4px rgba(90, 97, 105, 0.12), 
+						0px 7.5px 11px rgba(90, 97, 105, 0.1),
+						0px 3.5px 17.5px rgba(165, 182, 201, 0.1);
+	}
+	&__title {
+		padding: 23px 49px;
+		display: flex;
+		align-items: center;
+		@include desktopMin() {
+			padding: 18px 44px;
+		}
+		@include tablet() {
+			padding: 13px 39px;
+		}
+		@include beforeTablet() {
+			display: none;
+		}
+		&-logo {
+			margin-right: 7px;
+			& img {
+				width: 21.5px;
+				@include desktopMin() {
+					width: 18.5px;
+				}
+				@include tablet() {
+					width: 15px;
+				}
+			}
+		}
+		&-text {
+			font-size: 16px;
+			@include desktopMin() {
+				font-size: 14px;
+			}
+			@include tablet() {
+				font-size: 12px;
+			}
+			@include beforeTablet() {
+				display: none;
+			}
+		}
+	}
+	&__item {
+		&-container {
+			padding: 20px;
+			border-top: 1px solid $sidebarItemBorderColor;
+			display: flex;
+			align-items: center;
+			@include beforeTablet() {
+				justify-content: center;
+				padding: 15px
+			}
+			@include beforeMobile() {
+				justify-content: center;
+				padding: 10px
+			}
+		}
+		&:last-child &-container{
+			border-bottom: 1px solid $sidebarItemBorderColor;
+		}
+		&-logo {
+			margin-right: 5px;
+			display: flex;
+			width: 30px;
+			justify-content: center;
+			& img {
+				@include beforeMobile() {
+					width: 10px;
+				}
+			}
+			@include beforeTabletMax() {
+				margin-right: 3px;
+			}
+			@include beforeTablet() {
+				justify-content: center;
+			}
+		}
+		&-title {
+			font-size: 15px;
+			letter-spacing: -0.23px;
+			@include beforeTabletMax() {
+				font-size: 12px;
+			}
+			@include beforeTablet() {
+				display: none;
+			}
+		}
+		&:hover {
+			background-color: $sidebarWhiteShadow;
+			cursor: pointer;
+		}
+	}
+}
+.active {
+	& > div > div {
+		box-shadow: inset 4px 0px 0px $loginFooterColor;
+		background-color: $sidebarWhiteShadow;
+		color: $loginFooterColor;
+		@include beforeMobile() {
+			box-shadow: inset 2px 0px 0px $loginFooterColor;
+		}
+	}
+}

@@ -1,0 +1,249 @@
+@import './../../../styles/colors.scss';
+@import './../../../styles/media.scss';
+
+.main {
+	flex-grow: 1;
+	&__container {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}	
+	&__header {
+		&-container {
+			background-color: $whiteColor;
+			box-shadow: 0px 2.5px 9.5px rgba(90, 97, 105, 0.12),
+							inset 7.5px 0px 9.5px rgba(90, 97, 105, 0.12);
+			display: flex;
+		}
+		&-search {
+			display: flex;
+			align-items: center;
+			padding-left: 29px;
+			padding-right: 5px;
+			flex-grow: 1;
+			@include beforeTablet() {
+				padding-left: 10px;
+			}
+			@include beforeMobile() {
+				padding-left: 6px;
+			}
+			& input {
+				color: $searchInputColor;
+				font-size: 13px;
+				padding-left: 24px;
+				background-image: url(./../../../commons/images/main/header/loupe.svg);
+				background-repeat: no-repeat;
+				background-position: left;
+				@include beforeTablet() {
+					font-size: 11px;
+				}
+				@include beforeMobile() {
+					font-size: 9px;
+					background-image: none;
+					padding-left: 5px;
+				}
+				&:focus {
+					background-image: none;
+				}
+			}
+		}
+		&-notice {
+			display: flex;
+			align-items: center;
+			padding: 23px 26px;
+			box-shadow: 0.5px 0px 0px $noticeBorderColor, -0.5px 0px 0px $noticeBorderColor;
+			@include beforeTablet() {
+				padding: 12px 15px;
+			}
+			@include beforeMobile() {
+				padding: 6px 8px;
+			}
+			& img {
+				@include beforeTablet() {
+					width: 10px;
+				}
+				@include beforeMobile() {
+					width: 8px;
+				}
+			}
+		}
+		&-user {
+			display: flex;
+			align-items: center;
+			padding: 0px 29px 0px 25px;
+			@include beforeTablet() {
+				padding: 0 18px 0 14px;
+			}
+			@include beforeMobile() {
+				padding: 0 10px 0 6px;
+			}
+			&-avatar {
+				margin-right: 13px;
+				@include beforeTablet() {
+					margin-right: 0px;
+				}
+				& img {
+					width: 50px;
+					height: 50px;
+					border-radius: 50%;
+					@include beforeTablet() {
+						display: none;
+					}
+				}
+			}
+			&-name {
+				margin-right: 36px;
+				color: #5A6169;
+				font-size: 15px;
+				@include beforeTablet {
+					margin-right: 20px;
+					font-size: 12px;
+				}
+				@include beforeMobile() {
+					margin-right: 12px;
+					font-size: 8px;
+				}
+			}
+			&-list {
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
+	&__content {
+		padding: 28.5px 31.5px;
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		& .error-page {
+			align-self: center;
+			margin: auto;
+		}
+		@include beforeTablet() {
+			padding: 18.5px 21.5px;
+		}
+		@include beforeMobile() {
+			padding: 8px 11px;
+		}
+		&-header {
+			font-size: 29px;
+			color: $defaultTextColor;
+			letter-spacing: -0.725px;
+			margin-bottom: 30px;
+			@include beforeTablet() {
+				font-size: 20px;
+				margin-bottom: 20px;
+				text-align: center;
+			}
+			@include beforeMobile() {
+				font-size: 16px;
+				margin-bottom: 15px;
+			}
+		}
+		&-content {
+			background-color: $whiteColor;
+			border-radius: 9px;
+			box-shadow: 0px 1px 0px rgba(90, 97, 105, 0.11),
+						   0px 2px 4px rgba(90, 97, 105, 0.12),
+							0px 5px 5px rgba(90, 97, 105, 0.06), 
+							0px 3.5px 35px rgba(90, 97, 105, 0.1);
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			&-container {
+				flex-grow: 1;
+				position: relative;
+			}
+		}
+		& .preloader {
+			margin: auto;	
+		}
+	}
+	&__footer {
+		&-container {
+			display: flex;
+			justify-content: space-between;
+			background-color: $whiteColor;
+			padding: 27px 27.5px;
+			box-shadow: inset 3px 0.5px 7px #D7DAE3;
+			@include beforeTabletMax() {
+				padding: 22px 22.5px;
+				font-size: 12px;
+			}
+			@include beforeTablet() {
+				padding: 17px 17.5px;
+				font-size: 10px;
+			}
+			@include beforeMobile() {
+				padding: 10px 10.5px;
+			}
+		}
+		&-links {
+			display: flex;
+			&-item {
+				color: $loginFooterColor;
+				&:first-child {
+					margin-right: 16px;
+					@include beforeTablet() {
+						margin-right: 10px;
+					}
+				}
+			}
+		}
+		&-copy {
+			color: #818ea3;
+			@include beforeMobile() {
+				display: none;
+			}
+		}
+	}
+}
+.pagination {
+	display: flex;
+	justify-content: center;
+	padding-top: 10px;
+	@include beforeTablet() {
+		padding-top: 5px;
+	}
+	& > li {
+		font-size: 18px;
+		display: flex;
+		align-items: center;
+		font-weight: bold;
+		color: $loginFooterColor;
+		@include beforeDesktopMax() {
+			font-size: 16px;
+		}
+		@include beforeTabletMax() {
+			font-size: 14px;
+		}
+		@include beforeTablet() {
+			font-size: 12px;
+		}
+		&:not(:last-child) {
+			margin-right: 7px;
+		}
+		&.active {
+			border: 1px solid $loginFooterColor;
+			color: $whiteColor;
+			background-color: $loginFooterColor;
+			width: 35px;
+			height: 35px;
+			border-radius: 50%;
+			justify-content: center;
+			@include beforeDesktopMax() {
+				width: 30px;
+				height: 30px;
+			}
+			@include beforeTabletMax() {
+				width: 25px;
+				height: 25px;
+			}
+			@include beforeTablet() {
+				width: 20px;
+				height: 20px;
+			}	
+		}
+	}
+}

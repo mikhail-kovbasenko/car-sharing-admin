@@ -1,0 +1,86 @@
+@import './../../styles/colors.scss';
+@import './../../styles/media.scss';
+
+.table-content {
+	height: 100%;
+	position: relative;
+	overflow: auto;
+	padding: 0 10px;
+	@include beforeTablet() {
+		padding: 0 6px;
+	}
+	&__container {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+}
+.custom-table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	font-size: 12px;
+	@include beforeTablet() {
+		font-size: 11px;
+	}
+	& thead th{
+		position: sticky;
+		top: 0px;
+		font-weight: 700;
+		text-align: center;
+		background-color: $whiteColor;
+		border-bottom: none;
+		&:not(:last-child) {
+			border-right: none;
+		}
+	}
+	& tbody tr:hover td {
+		color: $defaultGreenColor;
+		cursor: pointer;
+		background-color: $sidebarItemBorderColor;
+	}
+	& td {
+		min-width: 150px;
+		text-align: center;
+		padding: 15px 5px;
+		color: #818EA3;
+		&:not(:last-child) {
+			border-right: none;
+		}
+		@include beforeDesktopMax() {
+			padding: 12px 5px;
+		}
+		@include beforeTabletMax() {
+			padding: 10px 5px;
+			min-width: 120px;
+		}
+		@include beforeTablet() {
+			padding: 8px 5px;
+			min-width: 100px;
+			letter-spacing: -0.3px;
+		}
+		@include beforeMobile() {
+			padding: 4px 2px;
+			min-width: 80px;
+		}
+		& img {
+			width: 200px;
+			@include beforeTabletMax() {
+				width: 180px;
+			}
+			@include beforeTablet() {
+				width: 150px;
+			}
+			@include beforeMobile() {
+				width: 100px;
+			}
+		}
+	}
+	& tr td:first-child {
+		text-align: left;
+		color: $defaultTextColor;
+	}
+	& tr:not(:last-child) td {
+		border-bottom: none;
+	}
+}

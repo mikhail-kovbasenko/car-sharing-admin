@@ -1,0 +1,52 @@
+@import './../../../../styles/colors.scss';
+@import './../../../../styles/media.scss';
+
+.cars {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 0 10px;
+	&__settings-buttons {
+		display: flex;
+		align-items: center;
+		&-container {
+			@include beforeTablet() {
+				display: flex;
+				flex-direction: column;
+			}
+			& a {
+				padding: 8px 32px 8.5px 32px;
+				color: $whiteColor;
+				border-radius: 4px;
+				font-size: 11px;
+				&:hover {
+					opacity: 0.6;
+				}
+				@include beforeTabletMax() {
+					padding: 6px 28px 6.5px 28px;
+				}
+				@include beforeTablet() {
+					padding: 4px 24px 4.5px 24px;
+				}
+				@include beforeMobile() {
+					padding: 2px 18px 2px 18px;
+					font-size: 10px;
+				}
+				&:first-child {
+					background-color: #C4183C;
+					margin-right: 15px;
+					@include beforeTablet() {
+						margin-right: 0;
+						margin-bottom: 10px;
+					}
+				}
+				&:last-child {
+					background-color: $loginFooterColor;
+					&:hover {
+
+					}
+				}
+			}
+		}
+	}
+}
