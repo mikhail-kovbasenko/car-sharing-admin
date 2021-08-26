@@ -23,7 +23,7 @@ const CarContainer = ({match}) => {
 	const isFetching = useSelector(state => state.app.isFetchingContent);
 	const colorItemCurrentId = useSelector(state => state.car.colorItemCurrentId);
 
-	const colorRef = useRef();
+	const colorRef = useRef(null);
 
 	const handleError = useErrorHandler();
 

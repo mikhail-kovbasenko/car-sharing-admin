@@ -5,8 +5,8 @@ import MainContainer from './Main/MainContainer';
 import SidebarContainer from './Sidebar/SidebarContainer';
 
 const Content = () => {
-	const sidebarTitleRef = useRef();
-	const firstSidebarItem = useRef();
+	const sidebarTitleRef = useRef(null);
+	const firstSidebarItem = useRef(null);
 
 	return (
 		<div className="content">
