@@ -8,7 +8,7 @@ import store from './redux/redux-store';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<HashRouter>
+		<HashRouter basename={'https://mikhail-kovbasenko.github.io/car-sharing-admin/'}>
 			<Provider store={store}>
 				<App />
 			</Provider>
