@@ -7,7 +7,7 @@ CAR SHARING ADMIN
 4) Поднять локальный сервер и запустить проект с помощью npm start
 
 Данные для авторизации:
-Логин: intern
-Пароль: intern-S!
+- Логин: intern
+- Пароль: intern-S!
 
 Ссылка на gh-page: https://mikhail-kovbasenko.github.io/car-sharing-admin
