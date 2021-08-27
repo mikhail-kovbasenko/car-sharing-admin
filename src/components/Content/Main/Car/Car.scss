@@ -288,6 +288,9 @@
 
 .car-settings {
 	flex-grow: 1;
+	& form {
+		height: 100%;
+	}
 	&__container {
 		padding: 19.5px 18px;
 		display: flex;
@@ -403,6 +406,16 @@
 			display: flex;
 			flex-direction: column;
 			width: 30%;
+			&.color-checkbox-list {
+				position: relative;
+				height: 100px;
+				overflow: auto;
+				& .color-checkbox-list__container {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+				}
+			}
 			@include beforeTabletMax() {
 				width: 50%;
 				margin-bottom: 10px;

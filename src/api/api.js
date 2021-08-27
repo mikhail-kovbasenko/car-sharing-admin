@@ -34,6 +34,13 @@ export const mainAPI = {
 		return axios.get(`${defaultURL}db/car/${id}`, {
 			headers: {...getDefaultHeaders(token)}
 		})
+	},
+	setNewCar(token, data) {
+		return axios.post(`${defaultURL}db/car`, data, {
+			headers: {
+				...getDefaultHeaders(token)
+			}
+		})
 	}
 }
 

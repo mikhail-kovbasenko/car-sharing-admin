@@ -19,9 +19,9 @@ export const addNewColorItemActionCreator = item => ({
 	type: ADD_COLOR_ITEM,
 	data: {item}
 })
-export const toggleColorCheckboxActionCreator = value => ({
+export const toggleColorCheckboxActionCreator = id => ({
 	type: TOGGLE_COLOR_CHECKBOX,
-	data: {value}
+	data: {id}
 })
 
 export const getCarById = (token, id, handleError) => dispatch => {
@@ -31,7 +31,6 @@ export const getCarById = (token, id, handleError) => dispatch => {
 		if(response.status === 200) {
 			dispatch(setCarActionCreator(response.data.data));
 			dispatch(setCarDescriptionActionCreator(response.data.data.description));
-			console.log(response.data.data.description);
 			dispatch(setCarImgActionCreator(response.data.data.thumbnail))
 			dispatch(toggleIsFetchingContentActionCreator(false));
 		}

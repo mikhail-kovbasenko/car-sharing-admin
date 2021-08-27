@@ -33,7 +33,7 @@ const car = (state = initialState, action) => {
 		}
 		case TOGGLE_COLOR_CHECKBOX: {
 			const colorItems = state.colorItems.map(item => {
-				if(item.value === action.data.value) item.checked = !item.checked;
+				if(item.id === action.data.id) item.checked = !item.checked;
 
 				return item;
 			})

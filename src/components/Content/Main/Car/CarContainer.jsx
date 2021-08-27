@@ -1,73 +1,93 @@
-import { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useErrorHandler } from "react-error-boundary"
-import { withRouter } from "react-router-dom"
-import { defaultState } from "../../../../utils/defaultInputState"
-import Car from "./Car"
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { useErrorHandler } from "react-error-boundary";
+import defaultState from "./../../../../utils/defaultInputState";
+import Preloader from "./../../../../commons/Preloader/Preloader";
 import { getCarById, setNewCarActionCreator } from "./../../../../redux/reducers/car/action-creators-car";
-import Preloader from "../../../../commons/Preloader/Preloader";
-
+import Car from "./Car";
+import { mainAPI } from "../../../../api/api";
 
 const CarContainer = ({match}) => {
 	const dispatch = useDispatch();
+	const handleError = useErrorHandler();
 
-	const [fillData, setFillData] = useState(false);
+	const [formFieldData, setFormFieldData] = useState(defaultState);
 	const [procent, setProcent] = useState(0);
 
-	const handleError = useErrorHandler();
-
-	const token = useSelector(state => state.auth.access); 
+	const token = useSelector(state => state.auth.access);
 	const car = useSelector(state => state.car.item);
-	const description = useSelector(state => state.car.description);
 	const isFetching = useSelector(state => state.app.isFetchingContent);
-	const colorItemCurrentId = useSelector(state => state.car.colorItemCurrentId);
-	const colorItems = useSelector(state => state.car.colorItems);
+	const description = useSelector(state => state.car.description);
 	const img = useSelector(state => state.car.img);
 
-<<<<<<< HEAD
-	const colorRef = useRef(null);
+	const calculateFillingProcent = () => {
+		const data = {...formFieldData};
+		delete data['color'];
 
-	const handleError = useErrorHandler();
+		const valuesLength = Object.entries(data).length;
+		const noEmptyValues = Object.values(data).filter(item => item !== '' && item !== null);
 
-	const addNewColorItem = value => {
-		dispatch(addNewColorItemActionCreator({
-			id: colorItemCurrentId,
-			value,
-			checked: false
-		}))
+		const procent = Math.trunc((noEmptyValues.length * 100) / valuesLength);
+		setProcent(procent);
 	}
-=======
->>>>>>> 6be43b48f018e6a9967969af031c29cbdc45c605
+	const updateFormFieldData = event => {
+		if(event.target.name === 'color' || event.target.type === 'checkbox') return;
+
+		setFormFieldData({
+			...formFieldData,
+			[event.target.name]: event.target.value
+		})
+	}
+	const sendCarDataInServer = data => {
+		const sendObject = {
+			name: 'Теst',
+			number: 'Test',
+			thumbnail: img,
+			description: 'Test',
+			categoryId: {
+				id: "600598a3ad015e0bb699774c",
+			},
+			colors: ["Green", "Blue"],
+			priceMin: 1000,
+			priceMax: 2000
+		}
+		console.log(sendObject);
+		mainAPI.setNewCar(token, sendObject).then(response => console.log(response));
+	}
+
 	useEffect(() => {
 		const id = match.params.carId;
 
 		id ? dispatch(getCarById(token, id, handleError)) : dispatch(setNewCarActionCreator());
+
+		return () => dispatch(setNewCarActionCreator());
 	}, [])
 	useEffect(() => {
-		if(!fillData) {
-			const defaultFillState = [...Object.entries(defaultState), ['description', description], ['img', ''], ['checkedColor', []]];
-			const defaultFillStateConvert = Object.fromEntries(defaultFillState);
-			
-			delete defaultFillStateConvert['color'];
-
-			setFillData(defaultFillStateConvert);
-		}
 		if(car && !Array.isArray(car) && typeof car === 'object') {
-			const {name, number, priceMax, priceMin, categoryId, description} = car;
+			const {name = '', number = '', priceMax = '', priceMin = '', categoryId} = car;
 			const type = categoryId ? categoryId.name : '';
-			setFillData({...fillData, ...{name, number, priceMax, priceMin, type, description}})
-
-			return () => dispatch(setNewCarActionCreator());
-		}
-
-	}, [car])
-	console.log(fillData);
+			
+			setFormFieldData({...formFieldData, name, number, priceMax, priceMin, color: '', type, description, img});
+		} else if(car && Array.isArray(car)) {
+			setFormFieldData({...formFieldData, description, img});
+		} 
+	}, [car, description, img])
+	useEffect(() => {
+		calculateFillingProcent();
+	}, [formFieldData])
+	useEffect(() => {
+		setFormFieldData({...formFieldData, colorItems: null});
+	}, [])
+	console.log(formFieldData);
 	return !car || isFetching 
-			 ? <Preloader/> 
-			 : <Car defaultState={defaultState}
-					  fillData={fillData}
-					  procent={procent}
-			      />
+			 ? <Preloader/>
+			 : <Car formFieldData={formFieldData}
+			 		  procent={procent}
+					  updateForm={updateFormFieldData}
+					  setFormFieldData={setFormFieldData}
+					  sendData={sendCarDataInServer}
+			 	/>
 }
 
 export default withRouter(CarContainer)
