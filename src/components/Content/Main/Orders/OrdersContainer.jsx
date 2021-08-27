@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Preloader from "../../../../commons/Preloader/Preloader";
-import { toggleIsFetchingActionCreator } from "../../../../redux/reducers/app";
-import { getOrdersFromServer } from "../../../../redux/reducers/orders";
+import { getOrdersFromServer } from "../../../../redux/reducers/orders/action-creators-orders";
 import Orders from "./Orders"
 import { useErrorHandler } from "react-error-boundary";
 

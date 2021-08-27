@@ -1,531 +1,463 @@
 @import './../../../../styles/colors.scss';
 @import './../../../../styles/media.scss';
 
-@mixin modelPadding {
-	padding: 34.5px 0 22.5px 0;
-	@include beforeDesktopMax() {
-		padding: 28.5px 0 16.5px 0;
-	}
-	@include beforeTabletMax() {
-		padding: 14px 0 8.5px 0;
-	}
-	@include beforeTablet() {
-		padding: 10px 0 4.5px 0;
-	}
-	@include before450() {
-		padding: 6px 0 0.5px 0;
-	}
-}
-
 .car {
 	height: 100%;
 	&__container {
-		display: flex;
-		justify-content: space-between;
 		height: 100%;
-		position: relative;
-		@include beforeTabletMax() {
-			flex-direction: column;
-		}
+		display: flex;
 		& > div {
 			background-color: $whiteColor;
 			box-shadow: 0px 2px 4px rgba(90, 97, 105, 0.12);
+			border-radius: 9px;
+		}
+		@include before450() {
+			flex-direction: column;
 		}
 	}
+}
 
-	&__model {
-		margin-right: 28px;
-		display: flex;
-		flex-direction: column;
-		align-self: flex-start;
-		position: relative;
+.car-model {
+	margin-right: 28px;
+	display: flex;
+	align-self: flex-start;
+	@include beforeTablet() {
+		margin-right: 18px;
+	}
+	@include before450() {
+		margin-right: 0;
+		width: 100%;
+		margin-bottom: 6px;
+	}
+	&__container {
+		padding: 34.5px 0 45px 0;
+		@include beforeDesktopMax() {
+			padding: 20.5px 0 30px 0;
+		}
 		@include beforeTabletMax() {
-			margin-right: 0;
-			margin-bottom: 10px;
+			padding: 16.5px 0 26px 0;
+		}
+		@include beforeTablet() {
+			padding: 14.5px 0 22px 0;
+		}
+		@include before450() {
+			padding: 6.5px 0 0 0;
+			display: flex;
+			position: relative;
 			width: 100%;
-			flex-direction: row;
 			justify-content: space-between;
-			height: 30%;
 			& > div {
 				width: 100%;
 			}
 		}
+	}
+	&__img-content {
+		margin-bottom: 10px;
+		@include beforeDesktopMax() {
+			margin-bottom: 6px;
+		}
 		@include before450() {
-			flex-direction: column;
-			justify-content: space-between
+			margin-bottom: 0;
+		}
+		&-img {
+			display: flex;
+			justify-content: center;
+			& img {
+				width: 240px;
+				@include beforeDesktopMax() {
+					width: 200px;
+				}
+				@include beforeTabletMax() {
+					width: 180px;
+				}
+				@include beforeTablet() {
+					width: 150px;
+				}
+				@include before450() {
+					width: 100px;
+				}
+			}
 		}
 	}
-
-	&__model-img {
-		box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.12);
-	
-		@include modelPadding();
+	&__name-content {
+		margin-bottom: 10.5px;
 		@include beforeTablet() {
+			margin-bottom: 7px;
+		}
+		@include before450() {
+			position: absolute;
+			bottom: 4px;
+			margin-bottom: 0;
+		}
+		&-container {
 			display: flex;
 			flex-direction: column;
-			justify-content: space-between;
-			box-shadow: none;
+			align-items: center;
 		}
-	}
-
-	&__model-img-image {
-		display: flex;
-		justify-content: center;
-		margin-bottom: 10px;
-		@include beforeTablet() {
-			margin-bottom: 0px;
-			justify-content: start;
-		}
-		@include before450() {
-			justify-content: flex-start;
-		}
-		& img {
-			width: 243px;
+		&-title {
+			font-size: 24.5px;
+			color: $defaultTextColor;
+			letter-spacing: -0.6px;
+			margin-bottom: 4.5px;
 			@include beforeDesktopMax() {
-				width: 200px;
+				font-size: 20px;
+				margin-bottom: 2.5px;
 			}
-			@include beforeTabletMax() {
-				width: 70%;
+			@include beforeTablet() {
+				font-size: 14px;
 			}
-			@include before450() {
-				width: 20%;
+		}
+		&-type {
+			font-size: 12.5px;
+			letter-spacing: -0.3px;
+			color:#818EA3;
+			@include beforeDesktopMax() {
+				font-size: 9px;
 			}
 		}
 	}
-
-	&__model-img-name {
-		display: flex;
-		flex-direction: column;
-		text-align: center;
-		margin-bottom: 10.5px;
-		@include beforeTabletMax() {
-			flex-direction: row;
-			justify-content: center;
-			align-items: center;
-		}
-		@include beforeTablet() {
-			margin-bottom: 0;
-			flex-direction: column;
-			align-items: flex-start;
-		}
-		@include before450() {
-			align-items: center;
-			margin-bottom: 10px;
-		}
-	}
-
-	&__model-img-title {
-		font-size: 24.5px;
-		color: $defaultTextColor;
-		margin-bottom: 4.5px;
+	&__file-content {
+		margin-bottom: 22.5px;
 		@include beforeDesktopMax() {
-			font-size: 18.5px;
-		}
-		@include beforeTabletMax() {
-			font-size: 14.5px;
-			margin-bottom: 0px;
-			margin-right: 10px;
+			margin-bottom: 18px;
 		}
 		@include beforeTablet() {
-			margin-right: 0;
-		}
-	}
-
-	&__model-img-type {
-		font-size: 12.5px;
-		color: #818ea3;
-		letter-spacing: -0.3;
-		@include beforeTabletMax() {
-			font-size: 10.5px;
-		}
-	}
-
-	&__model-img-file {
-		&.settings {display: none;}
-		@include beforeTablet() {
-			width: 80%;
+			margin-bottom: 14px;
 		}
 		@include before450() {
-			&.model {
-				display: none;
-			}
-			&.settings {
-				display: block;
-				width: 100px;
-			}
+			display: none;
 		}
 		&-wrapper {
-			& > input {
-				opacity: 0;
+			& input {
 				visibility: hidden;
+				opacity: 0;
 				position: absolute;
 				width: 0;
 			}
-			& > label {
+			& label {
 				width: 100%;
 				cursor: pointer;
 			}
 		}
-	}
-	&__model-input-file-button {
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
-		@include before450() {
-			justify-content: center;
-		}
-	}
-	&__model-input-file-item {
-		border: 0.5px solid $orderItemBorderColor;
-		width: 100%;
-		font-size: 10px;
-		padding: 8px 13px;
-		text-align: center;
-		color:#495057;
-		@include beforeTabletMax() {
-			padding: 4px 6px;
-		}
-		@include beforeTablet() {
-			padding: 6px 4px;
-			font-size: 8px;
-		}
-		&:first-child {
-			text-align: left;
-			border-right: none;
-			border-radius: 4px 0px 0px 4px;
-			@include before450() {
-				display: none;
-			}
-		}
-		&:last-child {
-			border-left: none;
-			background-color: #E9ECEF;
-			width: 30%;
-			border-radius: 0px 4px 4px 0px;
-			@include before450() {
-				border-radius: 4px;
-				border-left: 0.5px solid $orderItemBorderColor;
-				width: 100%;
-			}
-		}
-
-	}
-
-	&__model-filling {
-		display: flex;
-		flex-direction: column;
-		@include modelPadding();
-		padding: 14px 0 16px 0;
-		@include before450() {
-			display: none;
-		}
-	}
-
-	&__model-filling-title {
-		display: flex;
-		justify-content: space-between;
-		font-size: 13px;
-		margin-bottom: 10px;
-		@include beforeTabletMax() {
-			font-size: 11px;
-		}
-		&-text {
-			color: #868E96;
-		}
-		&-procent {
-			color: #5A6169;
-		}
-	}
-
-	&__model-filling-content {
-		&-wrapper {
-			box-shadow: inset 0px 0.5px 4px rgba(0, 0, 0, 0.25);
-			border-radius: 4px;
-		}
-		&-progress {
-			padding: 2px;
-			background-color: $loginFooterColor;
-			border-radius: 9px;
-			width: 75%;
-		}
-	}
-
-	&__model-description {
-		display: flex;
-		flex-direction: column;
-		box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.12);
-		padding: 22.5px 0 45px 0;
-		@include beforeTabletMax() {
-			padding: 14.5px 0 0 0;
-		}
-		@include beforeTablet() {
-			position: absolute;
-			bottom: 5px;
-			box-shadow: none;
-			align-items: flex-end;
-		}
-		@include before450() {
-			position: static;
-			justify-content: flex-start;
-			padding: 0;
-			flex-grow: 1;
-		}
-	}
-
-	&__model-description-title {
-		font-weight: 500;
-		font-size: 13px;
-		color: #868E96;
-		margin-bottom: 13.5px;
-		@include beforeTabletMax() {
-			font-size: 11px;
-			margin-bottom: 9.5px;
-		}
-		@include beforeTablet() {
-			padding-right: 10px;
-		}
-		@include before450() {
-			display: none;
-		}
-	}
-
-	&__model-description-text {
-		color: #5A6169;
-		font-size: 13.5px;
-		max-width: fit-content;
-		position: relative;
-		@include beforeTabletMax() {
-			font-size: 11.5px;
-		}
-		@include beforeTablet() {
-			width: 200px;
-			max-width: none;
-			overflow: auto;
-			height: 80px;
-		}
-		@include before450() {
-			height: 100%;
+		&-button {
+			display: flex;
+			justify-content: space-between;
 			width: 100%;
 		}
-		& p {
-  			word-break: break-all;
-			line-height: 19px;
-			letter-spacing: -0.4px;
-			text-align: left;
-			@include beforeTabletMax() {
-				line-height: 14px;
+		&-item {
+			border: 0.5px solid $orderItemBorderColor;
+			width: 100%;
+			font-size: 10px;
+			padding: 8px 13px;
+			text-align: center;
+			color: #495057;
+			@include beforeDesktopMax() {
+				padding: 5px 10px;
+			}
+	
+			&:first-child {
+				text-align: left;
+				border-right: none;
+				border-radius: 4px 0 0 4px;
+			}
+			&:last-child {
+				background-color: #e9ecef;
+				width: 30%;
+				border-radius: 0px 4px 4px 0px;
+			}
+		}
+	}
+	&__filling-content {
+		margin-bottom: 22.5px;
+		@include beforeDesktopMax() {
+			margin-bottom: 16px;
+		}
+		@include beforeTablet() {
+			margin-bottom: 12px;
+		}
+		@include before450() {
+			margin-bottom: 0;
+			flex-grow: 1;
+			display: none;
+		}
+		&-container {
+			box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.12),
+			            0px 1px 0px rgba(0, 0, 0, 0.12);
+			display: flex;
+			flex-direction: column;
+			padding: 14px 22.5px 16px 22.5px;
+			@include beforeDesktopMax() {
+				padding: 10px 18.5px 12px 18.5px;
 			}
 			@include beforeTablet() {
-				padding: 0 10px;
-				text-align: justify;
+				padding: 8px 14px 10px 14px;
 			}
 			@include before450() {
-
+				box-shadow: none;
+			}
+		}
+		&-header {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 10px;
+			@include beforeTablet() {
+				margin-bottom: 6px;
+				justify-content: center;
+			}
+			&-title {
+				font-size: 13px;
+				letter-spacing: -0.4px;
+				color: #868E96;
+				@include beforeTablet() {
+					display: none;
+				}
+			}
+			&-procent {
+				font-size: 11px;
+				color: #5A6169;
+				letter-spacing: -0.3px;
+			}
+		}
+		&-element {
+			&-wrapper {
+				box-shadow: inset 0px 0.5px 4px rgba(0, 0, 0, 0.25);
+				border-radius: 4px;
+			}
+			&-progress {
+				padding: 2px;
+				background-color: $loginFooterColor;
+				border-radius: 9px;
+				width: 25%;
 			}
 		}
 	}
-	&__model-description-container {
+	&__description-content {
+		&-container {
+			display: flex;
+			flex-direction: column;
+		}
+		&-title {
+			font-weight: 500;
+			font-size: 13px;
+			color: #868E96;
+			margin-bottom: 13.5px;
+			@include beforeDesktopMax() {
+				font-size: 11px;
+				margin-bottom: 10px;
+			}
+			@include before450() {
+				margin-bottom: 4px;
+			}
+		}
+		&-text {
+			color: #5A6169;
+			font-size: 13.5px;
+			line-height: 19.5px;
+			letter-spacing: -0.4px;
+			position: relative;
+			overflow: auto;
+			height: 100px;
+			@include beforeDesktopMax() {
+				font-size: 11.5px;
+				line-height: 15px;
+			}
+			@include before450() {
+				height: 85px;
+			}
+			&-container {
+				position: absolute;
+			}
+		}
+	}
+	.padding-container {
+		padding: 0 22.5px;
+		@include beforeDesktopMax() {
+			padding: 0 18.5px;
+		}
+		@include beforeTabletMax() {
+			padding: 0 14.5px;
+		}
 		@include beforeTablet() {
-			position: absolute;
+			padding: 0 10.5px;
+		}
+		@include before450() {
+			padding: 0 4.5px;
 		}
 	}
-	&__settings {
-		flex-grow: 1;
-		& form {
-			height: 100%;
-		}
-	}
+}
 
-	&__settings-container {
-		height: 100%;
+.car-settings {
+	flex-grow: 1;
+	&__container {
 		padding: 19.5px 18px;
 		display: flex;
 		flex-direction: column;
-		@include before450() {
-			padding: 10px 12px;
+		height: 100%;
+		@include beforeDesktopMax() {
+			padding: 14.6px 13px;
+		}
+		@include beforeTablet() {
+			padding: 10px 9px;
 		}
 	}
-
-	&__settings-title {
+	&__title {
 		font-weight: 500;
 		font-size: 17.5px;
-		letter-spacing: -0.4px;
+		letter-spacing: -0.44;
 		color: $defaultTextColor;
 		margin-bottom: 42px;
 		@include beforeDesktopMax() {
 			font-size: 14px;
-			margin-bottom: 25px;
+			margin-bottom: 32px;
 		}
-		@include beforeTabletMax() {
-			font-size: 14px;
-			margin-bottom: 12px;
+		@include beforeTablet() {
+			margin-bottom: 25px;
+			letter-spacing: -0.7px;
+		}
+		@include before450() {
+			margin-bottom: 5px;
+			text-align: center;
 		}
 	}
-
-	&__settings-form {
+	&__content {
+		display: flex;
+		flex-direction: column;
 		flex-grow: 1;
-
-		&__content {
+		&-container {
 			display: flex;
 			flex-direction: column;
+			flex-grow: 1;
+		}
+		&-footer {
+			&-container {
+				display: flex;
+				justify-content: space-between;
+			}
+			&-item { 
+				display: flex;
+				@include beforeTablet() {
+					flex-direction: column;
+					justify-content: center;
+				}
+				&-element {
+					& button {
+						padding: 7.5px 25px;
+						border-radius: 4px;
+						font-size: 11.5px;
+						color: $whiteColor;
+						@include beforeTabletMax() {
+							padding: 5.5px 18px;
+						}
+						@include beforeTablet() {
+							width: 100%;
+							padding: 5.5px 10px;
+						}
+						@include before450() {
+							padding: 4px 8px;
+							font-size: 9px;
+						}
+						&:hover {
+							opacity: 0.7;
+						}
+						&.save-button {
+							background-color: $loginFooterColor;
+							margin-right: 12px;
+							@include beforeTabletMax() {
+								margin-right: 8px;
+							}
+							@include beforeTablet() {
+								margin-right: 0;
+								margin-bottom: 5px;
+							}
+						}
+						&.cancel-button {
+							background-color: #E9ECEF;
+							color: $defaultTextColor;
+						}
+						&.delete-button {
+							background-color: #CB3656;
+						}
+					}
+				}
+			}
 		}
 		&-item {
-			margin-bottom: 31px;
-			
-			@include beforeTabletMax() {
-				margin-bottom: 15px;
+			&:not(:last-child) {
+				margin-bottom: 30.6px;
+				@include beforeDesktopMax() {
+					margin-bottom: 20.6px;
+				}
+				@include beforeTabletMax() {
+					margin-bottom: 0;
+				}
 			}
 			&-container {
 				display: flex;
 				justify-content: space-between;
-				@include before450() {
+				@include beforeTabletMax() {
 					flex-direction: column;
 				}
 			}
-			&-field {
-				width: 30%;
-				
-				@include beforeTabletMax() {
-					margin-right: 0;
-					&:first-child {
-						margin-bottom: 10px;
+		}
+		&-field {
+			display: flex;
+			flex-direction: column;
+			width: 30%;
+			@include beforeTabletMax() {
+				width: 50%;
+				margin-bottom: 10px;
+			}
+			@include beforeTablet() {
+				margin-bottom: 7px;
+			}
+			@include before450() {
+				margin-bottom: 4px;
+			}
+			&-title {
+				font-size: 10.5px;
+				margin-bottom: 8px;
+			}
+			&-element {
+				display: flex;
+				justify-content: space-between;
+				& input {
+					padding: 8px 11px;
+					border: 1px solid $orderItemBorderColor;
+					border-radius: 4px;
+					font-size: 11px;
+					width: 100%;
+					@include beforeTablet() {
+						padding: 4px 6px;
+						font-size: 10px;
+					}
+					&.color-input {
+						width: 90%;
 					}
 				}
-				@include before450() {
-					width: 50%;
-					margin-bottom: 0;
-				}
-				&-title {
-					font-size: 10.5px;
-					letter-spacing: -0.1px;	
-					margin-bottom: 4.5px;		
-				}
-				&-input {
+				&-plus {
 					display: flex;
-					justify-content: space-between;
-					&-plus {
-						padding: 7px;
-						border: 1px solid #BECAD6;
-						border-radius: 4px;
-						@include beforeDesktopMax() {
-							padding: 5px;
-						}
-						@include before450() {
-							padding: 3px;
-						}
-						&:hover {
-							opacity: 0.6;
-							cursor: pointer;
-						}
+					align-items: center;
+					padding: 7px;
+					border: 1px solid $orderItemBorderColor;
+					border-radius: 4px;
+					@include beforeDesktopMax() {
+						padding: 5px;
 					}
-					& input {			
-						padding: 8px 11px;
-						border: 1px solid $orderItemBorderColor;
-						border-radius: 4px;
-						font-size: 11px;
-						width: 100%;
-						@include beforeDesktopMax() {
-							padding: 6px 9px;
-				
-						}
-						@include before450() {	
-							padding: 4px 7px;
-						}
-						&.input-color {
-							width: 90%;
-							@include beforeDesktopMax() {
-								margin-right: 5px;
-							}
-						}
+					@include beforeTablet() {
+						padding: 3px
+					}
+					&:hover {
+						opacity: 0.6;
+						cursor: pointer;
 					}
 					& img {
 						width: 16px;
 						@include beforeDesktopMax() {
 							width: 12px;
 						}
-						@include before450() {
-							width: 10px;
-							margin: auto;
-						}
 					}
 				}
 			}
 		}
-	}
-
-	&__settings-footer {
-		&-container {
-			display: flex;
-			justify-content: space-between;
-			
-		}
-		&-item {
-			&:first-child {
-				@include beforeTablet() {
-					display: flex;
-					flex-direction: column;
-				}
-			}
-			&:last-child {
-				align-self: center;
-			}
-			&:first-child a:first-child {
-				margin-right: 12px;
-				@include beforeTablet() {
-					margin-right: 0;
-					margin-bottom: 10px;
-				}
-			}
-			
-			& a, & button {
-				padding: 7.5px 25px;
-				border-radius: 4px;
-				font-size: 11.5px;
-				color: $whiteColor;
-				@include beforeTablet() {
-					padding: 7.5px 15px;
-					text-align: center;
-					width: 100px;
-				}
-				@include before450() {
-					font-size: 10px;
-					padding: 7.5px 10px;
-					width: 100%;
-				}
-				&:hover {
-					opacity: 0.7;
-				}
-				&.save-button {
-					background-color: $loginFooterColor;
-					margin-right: 12px;
-					@include before450() {
-						margin-bottom: 3px;
-					}
-				}
-				&.cancel-button {
-					background-color: #E9ECEF;
-					color: $defaultTextColor;
-				}
-				&.remove-button {
-					background-color: #CB3656;
-				}
-			}
-		}
-	}
-}
-.model-container {
-	padding-left: 22.5px;
-	padding-right: 22.5px;
-	@include beforeTabletMax() {
-		padding-left: 12.5px;
-		padding-right: 12.5px;
-	}
-	@include beforeTablet() {
-		padding-left: 8.5;
-		padding-right: 8.5;
-	}
-	@include before450() {
-		padding-right: 4px;
-		padding-left: 4px;
 	}
 }

@@ -12,3 +12,6 @@ export const SET_CURRENT_PAGE_CAR = 'set-current-page-car';
 export const SET_CAR = 'set-car';
 export const SET_NEW_CAR = 'set-new-car';
 export const ADD_COLOR_ITEM = 'add-color-item';
+export const TOGGLE_COLOR_CHECKBOX = 'toggle-color-checkbox';
+export const SET_CAR_DESCRIPTION = 'set-car-description';
+export const SET_CAR_IMG = 'set-car-img';
