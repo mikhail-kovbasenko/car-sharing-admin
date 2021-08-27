@@ -4,6 +4,7 @@
 .sidebar {
 	width: 15%;
 	color: $defaultTextColor;
+	height: 100%;
 	@include beforeTablet() {
 		width: 10%;
 	}

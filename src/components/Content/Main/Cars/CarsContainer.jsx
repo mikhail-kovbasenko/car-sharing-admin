@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Preloader from "../../../../commons/Preloader/Preloader";
-import { getCarsFromServer } from "../../../../redux/reducers/cars";
+import { getCarsFromServer } from "../../../../redux/reducers/cars/action-creators-cars";
 import Cars from "./Cars";
 import { useErrorHandler } from "react-error-boundary";
 import { useRef } from "react";

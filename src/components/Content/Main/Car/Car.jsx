@@ -1,17 +1,16 @@
 import './Car.scss';
-import CarModel from './CarModel/CarModel';
-import CarSettings from './CarSettings/CarSettings';
+import CarModelContainer from './CarModel/CarModelContainer';
+import CarSettingsContainer from './CarSettings/CarSettingsContainer';
 
-const Car = ({color, addColor, formData}) => {
+const Car = () => {
 	return (
 		<div className="car">
 			<div className="car__container">
-				<CarModel/>
-				<CarSettings color={color} addColor={addColor} formData={formData}/>
+				<CarModelContainer/>
+				<CarSettingsContainer/>
 			</div>
 		</div>
 	)
 }
-
 
 export default Car;
