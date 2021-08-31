@@ -103,6 +103,9 @@ const CarContainer = ({match}) => {
 			imgRef.current.src = defaultCar;
 		}
 	}
+	const deleteCar = () => {
+		
+	}
 	useEffect(() => {
 		calculateFillingProcent()
 	}, [fillData])

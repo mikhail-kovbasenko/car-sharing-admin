@@ -118,6 +118,9 @@
 	}
 	&__file-content {
 		margin-bottom: 22.5px;
+		&.second-element {
+			display: none;
+		}
 		@include beforeDesktopMax() {
 			margin-bottom: 18px;
 		}
@@ -125,7 +128,14 @@
 			margin-bottom: 14px;
 		}
 		@include before450() {
-			display: none;
+			&.first-element {
+				display: none;
+			}
+			&.second-element {
+				display: block;
+				margin-bottom: 0;
+				width: 80%;
+			}
 		}
 		&-wrapper {
 			& input {
@@ -256,7 +266,7 @@
 			letter-spacing: -0.4px;
 			position: relative;
 			overflow: auto;
-			height: 100px;
+			height: 100px;	
 			@include beforeDesktopMax() {
 				font-size: 11.5px;
 				line-height: 15px;
@@ -266,7 +276,13 @@
 			}
 			&-container {
 				position: absolute;
+				word-break: break-all;
 			}
+		}
+		& textarea {
+			resize: none;
+			width: 100%;
+			height: 90%;
 		}
 	}
 	.padding-container {
@@ -439,6 +455,9 @@
 					border-radius: 4px;
 					font-size: 11px;
 					width: 100%;
+					&.error {
+						border: 2px solid red !important;
+					}
 					@include beforeTablet() {
 						padding: 4px 6px;
 						font-size: 10px;

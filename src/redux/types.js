@@ -15,3 +15,6 @@ export const ADD_COLOR_ITEM = 'add-color-item';
 export const TOGGLE_COLOR_CHECKBOX = 'toggle-color-checkbox';
 export const SET_CAR_DESCRIPTION = 'set-car-description';
 export const SET_CAR_IMG = 'set-car-img';
+export const SET_CATEGORIES = 'set-categories';
+export const SET_SAVED_CAR = 'set-saved-car';
+export const SET_COLOR_ITEMS = 'set-color-items';

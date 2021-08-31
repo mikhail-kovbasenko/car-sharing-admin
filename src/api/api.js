@@ -41,6 +41,27 @@ export const mainAPI = {
 				...getDefaultHeaders(token)
 			}
 		})
+	},
+	getCategories(token) {
+		return axios.get(`${defaultURL}db/category`, {
+			headers: {
+				...getDefaultHeaders(token)
+			}
+		})
+	},
+	deleteCarById(token, id) {
+		return axios.delete(`${defaultURL}db/car/${id}`, {
+			headers: {
+				...getDefaultHeaders(token)
+			}
+		})
+	},
+	updateCarById(token, id, data) {
+		return axios.put(`${defaultURL}db/car/${id}`, data, {
+			headers: {
+				...getDefaultHeaders(token)
+			}
+		})
 	}
 }
 

@@ -4,11 +4,10 @@ import { withRouter } from "react-router-dom";
 import { useErrorHandler } from "react-error-boundary";
 import defaultState from "./../../../../utils/defaultInputState";
 import Preloader from "./../../../../commons/Preloader/Preloader";
-import { getCarById, setNewCarActionCreator } from "./../../../../redux/reducers/car/action-creators-car";
+import { deleteCarById, getCarById, getCarCategories, setNewCarActionCreator, setNewCarInDatabase, updateCarById } from "./../../../../redux/reducers/car/action-creators-car";
 import Car from "./Car";
-import { mainAPI } from "../../../../api/api";
 
-const CarContainer = ({match}) => {
+const CarContainer = ({match, history}) => {
 	const dispatch = useDispatch();
 	const handleError = useErrorHandler();
 
@@ -20,6 +19,8 @@ const CarContainer = ({match}) => {
 	const isFetching = useSelector(state => state.app.isFetchingContent);
 	const description = useSelector(state => state.car.description);
 	const img = useSelector(state => state.car.img);
+	const categoriesList = useSelector(state => state.car.categoriesList);
+	const colorItems = useSelector(state => state.car.colorItems);
 
 	const calculateFillingProcent = () => {
 		const data = {...formFieldData};
@@ -40,26 +41,41 @@ const CarContainer = ({match}) => {
 		})
 	}
 	const sendCarDataInServer = data => {
-		const sendObject = {
-			name: 'Теst',
-			number: 'Test',
+		const id = match.params.carId;
+
+		const colors = colorItems.filter(item => {
+			if(item.checked) return item;
+		}).map(item => item.name);
+		const categoryId = categoriesList.find(item => item.name === data.type);
+
+		const object = {
+			name: data.name,
+			number: data.number,
 			thumbnail: img,
-			description: 'Test',
-			categoryId: {
-				id: "600598a3ad015e0bb699774c",
-			},
-			colors: ["Green", "Blue"],
-			priceMin: 1000,
-			priceMax: 2000
+			description,
+			categoryId,
+			colors,
+			priceMin: data.priceMin,
+			priceMax: data.priceMax
 		}
-		console.log(sendObject);
-		mainAPI.setNewCar(token, sendObject).then(response => console.log(response));
+	
+		id ? dispatch(updateCarById(token, id, object)) : dispatch(setNewCarInDatabase(token, object));
+	}
+	const deleteCar = () => {
+		const id = match.params.carId;
+		console.log(id);
+
+		if(!id) return;
+
+		Promise.all([dispatch(deleteCarById(token, id))]).then(() => history.push('/admin/cars'))
 	}
 
 	useEffect(() => {
 		const id = match.params.carId;
 
 		id ? dispatch(getCarById(token, id, handleError)) : dispatch(setNewCarActionCreator());
+		
+		if(categoriesList.length < 1) dispatch(getCarCategories(token));
 
 		return () => dispatch(setNewCarActionCreator());
 	}, [])
@@ -72,13 +88,13 @@ const CarContainer = ({match}) => {
 		} else if(car && Array.isArray(car)) {
 			setFormFieldData({...formFieldData, description, img});
 		} 
-	}, [car, description, img])
+	}, [car])
+	useEffect(() => {
+		setFormFieldData({...formFieldData, description, img});
+	}, [description, img])
 	useEffect(() => {
 		calculateFillingProcent();
 	}, [formFieldData])
-	useEffect(() => {
-		setFormFieldData({...formFieldData, colorItems: null});
-	}, [])
 	console.log(formFieldData);
 	return !car || isFetching 
 			 ? <Preloader/>
@@ -87,6 +103,8 @@ const CarContainer = ({match}) => {
 					  updateForm={updateFormFieldData}
 					  setFormFieldData={setFormFieldData}
 					  sendData={sendCarDataInServer}
+					  categoriesList={categoriesList}
+					  deleteCar={deleteCar}
 			 	/>
 }
 

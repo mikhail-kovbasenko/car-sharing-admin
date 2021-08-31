@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { useEffect } from "react";
 import { useLayoutEffect } from "react";
+import { useSelector } from "react-redux";
 import MainHeader from "./MainHeader";
 
 const MainHeaderContainer = props => {
 	const [title, setTitle] = useState(null);
 	const [item, setItem] = useState(null);
 	const [height, setHeight] = useState();
+
+	const carSaved = useSelector(state => state.car.carSaved);
 
 	useLayoutEffect(() => {
 		if(props.sidebarTitle && props.sidebarTitle.current && props.sidebarItem && props.sidebarItem.current) {
@@ -28,7 +30,7 @@ const MainHeaderContainer = props => {
 		} else {
 		}
 	}, [title])
-	return <MainHeader height={height}/>
+	return <MainHeader height={height} saved={carSaved}/>
 }
 
 

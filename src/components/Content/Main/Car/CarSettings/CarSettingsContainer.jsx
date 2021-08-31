@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addNewColorItemActionCreator, toggleColorCheckboxActionCreator } from "./../../../../../redux/reducers/car/action-creators-car";
 import CarSettings from "./CarSettings";
 
-const CarSettingsContainer = ({formFieldData, updateForm, setFormFieldData, sendData}) => {
+const CarSettingsContainer = ({formFieldData, deleteCar, updateForm, setFormFieldData, sendData, categoriesList}) => {
 	const dispatch = useDispatch();
 
 	const formFieldSettingsData = {...formFieldData};
@@ -47,20 +47,36 @@ const CarSettingsContainer = ({formFieldData, updateForm, setFormFieldData, send
 		const colorsIdList = colorItems.filter(item => {
 			if(item['checked']) return item['id'];
 		});
-
+	
 		setColorsIdList(colorsIdList);
 	}, [])
 	useEffect(() => {
 		if(colorsIdList.length > 0) setFormFieldData({...formFieldData, colorItems: true})
 		else setFormFieldData({...formFieldData, colorItems: null})
 	}, [colorsIdList])
+	useEffect(() => {
+		const checked = colorItems.some(item => item.checked);
+		
+		switch(checked) {
+			case true: setFormFieldData({...formFieldData, colorItems: true}); break;
+			case false: setFormFieldData({...formFieldData, colorItems: null}); break;
+		}
+	}, [])
+	useEffect(() => {
+		if(colorsIdList.length < 1) {
+			const checked = colorItems.some(item => item.checked);
 
+			if(checked) setFormFieldData({...formFieldData, colorItems: true});
+		}
+	}, [colorsIdList])
 	return <CarSettings formFieldSettingsData={formFieldSettingsData}
 						     update={updateForm}
 							  colorItems={colorItems}
 							  toggleCheckbox={toggleCheckbox}
 							  addNewColorCheckbox={addNewColorCheckbox}
+							  categoriesList={categoriesList}
 							  sendData={sendData}
+							  deleteCar={deleteCar}
 							/>
 }
 

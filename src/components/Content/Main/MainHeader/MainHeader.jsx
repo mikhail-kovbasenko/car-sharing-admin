@@ -3,8 +3,9 @@ import './../Main.scss';
 import noticeImg from './../../../../commons/images/main/header/notice.svg';
 import avatar from './../../../../commons/images/main/header/avatart.jpg';
 import dropdown from './../../../../commons/images/main/header/dropdown.svg';
+import completeIcon from './../../../../commons/images/main/header/complete-icon.svg';
 
-const MainHeader = ({height}) => {
+const MainHeader = ({height, saved}) => {
 	return (
 		<div className="main__header">
 			<MainHeaderContainerCSS className="main__header-container" height={height}>
@@ -24,6 +25,15 @@ const MainHeader = ({height}) => {
 					</div>
 				</div>
 			</MainHeaderContainerCSS>
+			{
+				saved &&
+				<div className="main__header-car-success">
+					<div className="main__header-car-success-container">
+						<div className="main__header-car-success-item"><img src={completeIcon} alt="complete-icon" /></div>
+						<div className="main__header-car-success-item">Успех! Машина сохранена</div>
+					</div>
+				</div>
+			}
 		</div>
 	)
 }

@@ -1,4 +1,4 @@
-import { ADD_COLOR_ITEM, SET_CAR, SET_CAR_DESCRIPTION, SET_CAR_IMG, SET_NEW_CAR, TOGGLE_COLOR_CHECKBOX } from "../../types";
+import { ADD_COLOR_ITEM, SET_CAR, SET_CAR_DESCRIPTION, SET_CAR_IMG, SET_CATEGORIES, SET_COLOR_ITEMS, SET_NEW_CAR, SET_SAVED_CAR, TOGGLE_COLOR_CHECKBOX } from "../../types";
 
 const initialState = {
 	item: null,
@@ -6,7 +6,9 @@ const initialState = {
 	colorItemCurrentId: 0,
 	fillingProcent: 0,
 	description: null,
-	img: null
+	img: null,
+	categoriesList: [],
+	carSaved: false
 }
 
 const car = (state = initialState, action) => {
@@ -52,6 +54,33 @@ const car = (state = initialState, action) => {
 			return {
 				...state,
 				img: action.data.img
+			}
+		}
+		case SET_CATEGORIES: {
+			return {
+				...state,
+				categoriesList: action.data.data
+			}
+		}
+		case SET_SAVED_CAR: {
+			return {
+				...state,
+				carSaved: action.data.bool
+			}
+		}
+		case SET_COLOR_ITEMS: {
+			console.log(action.data.data);
+			const colorItems = action.data.data.map((item, index) => {
+				return {
+					id: index,
+					name: item,
+					checked: true
+				}
+			})
+			return {
+				...state,
+				colorItems,
+				colorItemCurrentId: colorItems.length
 			}
 		}
 		default: return state;

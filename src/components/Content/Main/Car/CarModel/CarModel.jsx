@@ -1,5 +1,6 @@
 import './../Car.scss';
 import styled from 'styled-components';
+import FileInput from '../../../../../commons/FileInput/FileInput';
 
 const CarModel = (
 		{
@@ -8,12 +9,14 @@ const CarModel = (
 			description,
 			defaultCar,
 			getSrcForImg,
-			imgRef,
-			changeImg,
 			name,
 			type,
 			loaded,
-			onLoadImg
+			onLoadImg,
+			isTextarea,
+			setTextarea,
+			textareaRef,
+			changeDescription
 		}
 	) => {
 	return (
@@ -28,7 +31,6 @@ const CarModel = (
 								  onError={event => event.target.src = defaultCar} 
 								  onLoad={onLoadImg}
 								  style={{display: loaded ? 'block' : 'none'}}
-								  ref={imgRef}
 								  alt="car-model" />
 							{ loaded || <div>Загрузка изображения...</div>}
 						</div>
@@ -40,19 +42,7 @@ const CarModel = (
 						<div className="car-model__name-content-type">{type}</div>
 					</div>
 				</div>
-				<div className="car-model__file-content padding-container">
-					<div className="car-model__file-content-container">
-						<div className="car-model__file-content-wrapper">
-							<input type="file" id="car-model__file-content-input" onChange={changeImg}/>
-							<label htmlFor="car-model__file-content-input">
-								<div className="car-model__file-content-button">
-									<div className="car-model__file-content-item">Выберите файл...</div>
-									<div className="car-model__file-content-item">Обзор</div>
-								</div>
-							</label>
-						</div>
-					</div>
-				</div>
+					<FileInput secondClass={'first-element'}/>							
 				<div className="car-model__filling-content">
 					<div className="car-model__filling-content-container">
 						<div className="car-model__filling-content-header">
@@ -67,12 +57,18 @@ const CarModel = (
 					</div>
 				</div>
 				<div className="car-model__description-content padding-container">
-					<div className="car-model__description-content-container">
+					<div className="car-model__description-content-container" onClick={() => setTextarea(true)}>
 						<div className="car-model__description-content-title">Описание</div>
 						<div className="car-model__description-content-text">
-							<div className="car-model__description-content-text-container">
-								{description}
-							</div>
+							{
+								isTextarea
+								? <textarea value={description}
+											   ref={textareaRef} 
+												onBlur={() => setTextarea(false)}
+												onChange={changeDescription}
+												></textarea>
+								: <div className="car-model__description-content-text-container">{description}</div>
+							}
 						</div>
 					</div>
 				</div>
