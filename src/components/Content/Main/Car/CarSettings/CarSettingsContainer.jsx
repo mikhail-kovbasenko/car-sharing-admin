@@ -49,7 +49,7 @@ const CarSettingsContainer = ({formFieldData, deleteCar, updateForm, setFormFiel
 		});
 	
 		setColorsIdList(colorsIdList);
-	}, [])
+	}, [colorItems])
 	useEffect(() => {
 		if(colorsIdList.length > 0) setFormFieldData({...formFieldData, colorItems: true})
 		else setFormFieldData({...formFieldData, colorItems: null})
@@ -69,6 +69,7 @@ const CarSettingsContainer = ({formFieldData, deleteCar, updateForm, setFormFiel
 			if(checked) setFormFieldData({...formFieldData, colorItems: true});
 		}
 	}, [colorsIdList])
+	
 	return <CarSettings formFieldSettingsData={formFieldSettingsData}
 						     update={updateForm}
 							  colorItems={colorItems}

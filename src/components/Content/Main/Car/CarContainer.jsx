@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import { useErrorHandler } from "react-error-boundary";
 import defaultState from "./../../../../utils/defaultInputState";
 import Preloader from "./../../../../commons/Preloader/Preloader";
@@ -21,6 +21,7 @@ const CarContainer = ({match, history}) => {
 	const img = useSelector(state => state.car.img);
 	const categoriesList = useSelector(state => state.car.categoriesList);
 	const colorItems = useSelector(state => state.car.colorItems);
+	const savedCarId = useSelector(state => state.car.savedCarId);
 
 	const calculateFillingProcent = () => {
 		const data = {...formFieldData};
@@ -63,7 +64,6 @@ const CarContainer = ({match, history}) => {
 	}
 	const deleteCar = () => {
 		const id = match.params.carId;
-		console.log(id);
 
 		if(!id) return;
 
@@ -95,7 +95,12 @@ const CarContainer = ({match, history}) => {
 	useEffect(() => {
 		calculateFillingProcent();
 	}, [formFieldData])
-	console.log(formFieldData);
+	useEffect(() => {
+		if(savedCarId) {
+			history.push('/admin/car/' + savedCarId);
+		}
+	}, [savedCarId])
+	
 	return !car || isFetching 
 			 ? <Preloader/>
 			 : <Car formFieldData={formFieldData}

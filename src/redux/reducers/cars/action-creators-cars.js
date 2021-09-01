@@ -14,7 +14,6 @@ const setCurrentPageCarActionCreator = page => ({
 	type: SET_CURRENT_PAGE_CAR,
 	data: {page}
 })
-
 export const getCarsFromServer = (handleError, token, limit, page, preloader = false) => dispatch => {
 	if(!preloader) {
 		dispatch(toggleIsFetchingActionCreator(true));

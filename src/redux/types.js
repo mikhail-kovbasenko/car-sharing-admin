@@ -18,3 +18,4 @@ export const SET_CAR_IMG = 'set-car-img';
 export const SET_CATEGORIES = 'set-categories';
 export const SET_SAVED_CAR = 'set-saved-car';
 export const SET_COLOR_ITEMS = 'set-color-items';
+export const SET_SAVED_CAR_ID = 'set-saved-car-id';

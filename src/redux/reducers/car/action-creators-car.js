@@ -1,5 +1,5 @@
 import { mainAPI } from "../../../api/api";
-import { ADD_COLOR_ITEM, SET_CAR, SET_CAR_DESCRIPTION, SET_CAR_IMG, SET_CATEGORIES, SET_COLOR_ITEMS, SET_NEW_CAR, SET_SAVED_CAR, TOGGLE_COLOR_CHECKBOX } from "../../types";
+import { ADD_COLOR_ITEM, SET_CAR, SET_CAR_DESCRIPTION, SET_CAR_IMG, SET_CATEGORIES, SET_COLOR_ITEMS, SET_NEW_CAR, SET_SAVED_CAR, SET_SAVED_CAR_ID, TOGGLE_COLOR_CHECKBOX } from "../../types";
 import { toggleIsFetchingContentActionCreator } from "../app/action-creators-app";
 
 const setCarActionCreator = data => ({
@@ -17,6 +17,10 @@ const setSavedCarActionCreator = bool => ({
 const setColorItemsActionCreator = data => ({
 	type: SET_COLOR_ITEMS,
 	data: {data}
+})
+const setSavedCarIdActionCreator = id => ({
+	type: SET_SAVED_CAR_ID,
+	data: {id}
 })
 export const setCarDescriptionActionCreator = text => ({
 	type: SET_CAR_DESCRIPTION,
@@ -59,10 +63,12 @@ export const getCarCategories = token => dispatch => {
 export const setNewCarInDatabase = (token, data) => dispatch => {
 	dispatch(toggleIsFetchingContentActionCreator(true));
 
-	mainAPI.setNewCar(token, data).then(() => {
+	mainAPI.setNewCar(token, data).then(response => {
 		dispatch(toggleIsFetchingContentActionCreator(false));
 		dispatch(setSavedCarActionCreator(true));
-
+		
+		const id = response.data.data.id;
+		dispatch(setSavedCarIdActionCreator(id));
 		setTimeout(() => {
 			dispatch(setSavedCarActionCreator(false))
 		}, 2000)
