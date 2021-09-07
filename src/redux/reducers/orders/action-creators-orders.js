@@ -1,33 +1,6 @@
-import { mainAPI } from "../../api/api";
-import { defaultPageSettings } from "../../utils/defaultPageSettings";
-import { SET_CURRENT_PAGE, SET_ORDERS, SET_ORDERS_COUNT } from "../types";
-import { toggleIsFetchingActionCreator, toggleIsFetchingContentActionCreator } from "./app";
-
-const initialState = {...defaultPageSettings}
-
-const orders = (state = initialState, action) => {
-	switch(action.type) {
-		case SET_ORDERS_COUNT: {
-			return {
-				...state,
-				itemsCount: action.data.count
-			}
-		}
-		case SET_CURRENT_PAGE: {
-			return {
-				...state,
-				currentPage: action.data.page
-			}
-		}
-		case SET_ORDERS: {
-			return {
-				...state,
-				items: action.data.data
-			}
-		}
-		default: return state;
-	} 
-}
+import { mainAPI } from "../../../api/api";
+import { SET_CURRENT_PAGE, SET_ORDERS, SET_ORDERS_COUNT } from "../../types";
+import { toggleIsFetchingActionCreator, toggleIsFetchingContentActionCreator } from "../app/action-creators-app";
 
 const setItemsCountActionCreator = count => ({
 	type: SET_ORDERS_COUNT,
@@ -62,4 +35,3 @@ export const getOrdersFromServer = (handleError, token, limit, page, preloader =
 	}, error => handleError(error))
 }
 
-export default orders;

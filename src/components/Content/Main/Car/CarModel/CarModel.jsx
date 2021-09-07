@@ -1,38 +1,75 @@
 import './../Car.scss';
-import defaultCar from './../../../../../commons/images/main/orders/default-cars.jpeg';
 import styled from 'styled-components';
 import FileInput from '../../../../../commons/FileInput/FileInput';
 
-const CarModel = () => {
+const CarModel = (
+		{
+			procent, 
+			img, 
+			description,
+			defaultCar,
+			getSrcForImg,
+			name,
+			type,
+			loaded,
+			onLoadImg,
+			isTextarea,
+			setTextarea,
+			textareaRef,
+			changeDescription
+		}
+	) => {
 	return (
-		<div className="car__model">
-			<div className="car__model-img model-container">
-				<div className="car__model-img-image">
-					<img src={defaultCar} alt="car" />
-				</div>
-				<div className="car__model-img-name">
-					<div className="car__model-img-title">Hyndai, i30 N</div>
-					<div className="car__model-img-type">Компакт-кар</div>
-				</div>
-				<FileInput secondClass={'model'}/>
-			</div>
-			<div className="car__model-filling model-container">
-				<div className="car__model-filling-title">
-					<div className="car__model-filling-title-text">Заполнено</div>
-					<div className="car__model-filling-title-procent">15%</div>
-				</div>
-				<div className="car__model-filling-content">
-					<div className="car__model-filling-content-wrapper">
-						<ProgressInput width={15} className="car__model-filling-content-progress" />
+		<div className="car-model">
+			<div className="car-model__container">
+				<div className="car-model__img-content padding-container">
+					<div className="car-model__img-content-container">
+						<div className="car-model__img-content-img">
+							<img src={getSrcForImg(img)}
+								  crossOrigin="anonymous"
+								  referrerPolicy="origin"
+								  onError={event => event.target.src = defaultCar} 
+								  onLoad={onLoadImg}
+								  style={{display: loaded ? 'block' : 'none'}}
+								  alt="car-model" />
+							{ loaded || <div>Загрузка изображения...</div>}
+						</div>
 					</div>
 				</div>
-			</div>
-			<div className="car__model-description model-container">
-				<div className="car__model-description-title">Описание</div>
-				<div className="car__model-description-text">
-					<div className="car__model-description-container">
-					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga tempora debitis ipsam a dolore temporibus repellat sit omnis quidem tenetur perferendis, sequi, ex qui, obcaecati quis doloribus ut voluptas veritatis.
-					</p>
+				<div className="car-model__name-content padding-container">
+					<div className="car-model__name-content-container">
+						<div className="car-model__name-content-title">{name}</div>
+						<div className="car-model__name-content-type">{type}</div>
+					</div>
+				</div>
+					<FileInput secondClass={'first-element'}/>							
+				<div className="car-model__filling-content">
+					<div className="car-model__filling-content-container">
+						<div className="car-model__filling-content-header">
+							<div className="car-model__filling-content-header-title">Заполнено</div>
+							<div className="car-model__filling-content-header-procent">{procent}%</div>
+						</div>
+						<div className="car-model__filling-content-element">
+							<div className="car-model__filling-content-element-wrapper">
+								<FillingProgress width={procent} className="car-model__filling-content-element-progress"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className="car-model__description-content padding-container">
+					<div className="car-model__description-content-container" onClick={() => setTextarea(true)}>
+						<div className="car-model__description-content-title">Описание</div>
+						<div className="car-model__description-content-text">
+							{
+								isTextarea
+								? <textarea value={description}
+											   ref={textareaRef} 
+												onBlur={() => setTextarea(false)}
+												onChange={changeDescription}
+												></textarea>
+								: <div className="car-model__description-content-text-container">{description}</div>
+							}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -40,9 +77,8 @@ const CarModel = () => {
 	)
 }
 
-const ProgressInput = styled.div`
+const FillingProgress = styled.div`
 	width: ${props => props.width + '%'}
 `
-
 
 export default CarModel;

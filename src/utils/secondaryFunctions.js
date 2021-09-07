@@ -44,3 +44,6 @@ export function getRandomString() {
 
 	return result;
 }
+export function checkInputCarType(categories, value) {
+	return categories.includes(value);
+}

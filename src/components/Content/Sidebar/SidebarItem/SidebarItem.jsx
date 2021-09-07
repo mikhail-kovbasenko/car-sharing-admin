@@ -6,7 +6,7 @@ import './../Sidebar.scss';
 const SidebarItem = ({ data, sidebarRef }) => {
 	const { id, title, img, to } = data;
 	const imgPath = require(`./../../../../commons/images/sidebar/${img}.svg`);
-	const linkRef = useRef();
+	const linkRef = useRef(null);
 	const ref = id === 1 ? sidebarRef : null;
 
 	return (

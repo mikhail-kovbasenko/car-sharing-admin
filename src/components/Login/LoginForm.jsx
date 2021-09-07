@@ -1,8 +1,8 @@
 import { Field, Form, Formik } from "formik";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleModalActionCreator } from "../../redux/reducers/app";
-import { setAuthData, toggleLoginErrorActionCreator } from "../../redux/reducers/auth";
+import { toggleModalActionCreator } from "../../redux/reducers/app/action-creators-app";
+import { setAuthData, toggleLoginErrorActionCreator } from "../../redux/reducers/auth/action-creators-auth";
 
 const LoginForm = () => {
 	const loginError = useSelector(state => state.auth.loginError);
