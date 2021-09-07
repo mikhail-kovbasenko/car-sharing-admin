@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CustomSettingsHeader from "../../../../commons/CustomSettingsHeader/CustomSettingsHeader";
 import CustomTableContainer from "../../../../commons/CustomTable/CustomTableContainer";
 import Preloader from "../../../../commons/Preloader/Preloader";
-import { getCarsFromServer } from "../../../../redux/reducers/cars";
+import { getCarsFromServer } from "../../../../redux/reducers/cars/action-creators-cars";
 import { getTableData } from "../../../../utils/secondaryFunctions";
 import MainContentContainer from "../MainContent/MainContentContainer";
 import './Cars.scss';
